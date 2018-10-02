@@ -1,1 +1,7 @@
 .vs/
+ShoppingList.Business.Implementation/obj/
+ShoppingList.Business.Tests/obj/
+ShoppingList.Business/obj/
+ShoppingList.Infrastructure.Tests/obj/
+ShoppingList.Infrastructure/obj/
+ShoppingList.Infrastructure.Implementation/obj/
