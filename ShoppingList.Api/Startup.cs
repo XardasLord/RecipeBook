@@ -27,7 +27,10 @@ namespace ShoppingList.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ShoppingListDbContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:ShoppingListDB"]));
+            services.AddDbContext<ShoppingListDbContext>(
+                opts => opts.UseSqlServer(Configuration["ConnectionString:ShoppingListDB"], 
+                b => b.MigrationsAssembly("ShoppingList.Api")) // TODO: Fix the assembly for migrations to the Database project
+            );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
