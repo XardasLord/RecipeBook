@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Infrastructure.Tests", "ShoppingList.Infrastructure.Tests\ShoppingList.Infrastructure.Tests.csproj", "{FC845127-5D74-450F-8081-536F0D8CC331}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Database", "ShoppingList.Database\ShoppingList.Database.csproj", "{DF708CE9-8BD0-4076-AD4F-F0FB8C600365}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Database", "ShoppingList.Database\ShoppingList.Database.csproj", "{DF708CE9-8BD0-4076-AD4F-F0FB8C600365}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Entities", "ShoppingList.Entities\ShoppingList.Entities.csproj", "{826EFF8E-A241-493C-879B-8EC555277659}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Entities", "ShoppingList.Entities\ShoppingList.Entities.csproj", "{826EFF8E-A241-493C-879B-8EC555277659}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Api", "ShoppingList.Api\ShoppingList.Api.csproj", "{B37F6D15-2B9A-4546-9992-D7EF2BFB7F25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{826EFF8E-A241-493C-879B-8EC555277659}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{826EFF8E-A241-493C-879B-8EC555277659}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{826EFF8E-A241-493C-879B-8EC555277659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B37F6D15-2B9A-4546-9992-D7EF2BFB7F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37F6D15-2B9A-4546-9992-D7EF2BFB7F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37F6D15-2B9A-4546-9992-D7EF2BFB7F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37F6D15-2B9A-4546-9992-D7EF2BFB7F25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,3 +15,5 @@ ShoppingList.Database/obj/
 ShoppingList.Entities/obj/
 ShoppingList.Database/bin/
 ShoppingList.Entities/bin/
+ShoppingList.Api/obj/
+ShoppingList.Api/bin/
