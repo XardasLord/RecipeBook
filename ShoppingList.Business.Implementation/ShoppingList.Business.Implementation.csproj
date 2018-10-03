@@ -7,6 +7,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ShoppingList.Business\ShoppingList.Business.csproj" />
     <ProjectReference Include="..\ShoppingList.Database\ShoppingList.Database.csproj" />
+    <ProjectReference Include="..\ShoppingList.Entities\ShoppingList.Entities.csproj" />
+    <ProjectReference Include="..\ShoppingList.Infrastructure\ShoppingList.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
