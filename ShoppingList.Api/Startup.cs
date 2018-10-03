@@ -29,7 +29,7 @@ namespace ShoppingList.Api
         {
             services.AddDbContext<ShoppingListDbContext>(
                 opts => opts.UseSqlServer(Configuration["ConnectionString:ShoppingListDB"], 
-                b => b.MigrationsAssembly("ShoppingList.Api")) // TODO: Fix the assembly for migrations to the Database project
+                b => b.MigrationsAssembly("ShoppingList.Database"))
             );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
