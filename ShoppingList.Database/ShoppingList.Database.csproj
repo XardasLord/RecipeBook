@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ShoppingList.Entities\ShoppingList.Entities.csproj" />
     <ProjectReference Include="..\ShoppingList.Infrastructure.Implementation\ShoppingList.Infrastructure.Implementation.csproj" />
     <ProjectReference Include="..\ShoppingList.Infrastructure\ShoppingList.Infrastructure.csproj" />
