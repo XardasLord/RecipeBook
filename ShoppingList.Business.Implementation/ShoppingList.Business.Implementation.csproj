@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingList.Business\ShoppingList.Business.csproj" />
+    <ProjectReference Include="..\ShoppingList.Database\ShoppingList.Database.csproj" />
+  </ItemGroup>
+
 </Project>

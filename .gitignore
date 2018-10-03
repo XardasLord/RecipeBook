@@ -5,3 +5,13 @@ ShoppingList.Business/obj/
 ShoppingList.Infrastructure.Tests/obj/
 ShoppingList.Infrastructure/obj/
 ShoppingList.Infrastructure.Implementation/obj/
+ShoppingList.Business.Implementation/bin/
+ShoppingList.Business.Tests/bin/Debug/netstandard2.0/ShoppingList.Business.Tests.deps.json
+ShoppingList.Business/bin/
+ShoppingList.Infrastructure.Implementation/bin/
+ShoppingList.Infrastructure.Tests/bin/
+ShoppingList.Infrastructure/bin/
+ShoppingList.Database/obj/
+ShoppingList.Entities/obj/
+ShoppingList.Database/bin/
+ShoppingList.Entities/bin/
