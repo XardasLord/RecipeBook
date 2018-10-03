@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Business", "ShoppingList.Business\ShoppingList.Business.csproj", "{A2440D26-C465-45AA-82D3-6C69C2056F14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Business", "ShoppingList.Business\ShoppingList.Business.csproj", "{A2440D26-C465-45AA-82D3-6C69C2056F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Business.Implementation", "ShoppingList.Business.Implementation\ShoppingList.Business.Implementation.csproj", "{569010A6-7A9F-4D79-B3E1-99C56A2F2F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Business.Implementation", "ShoppingList.Business.Implementation\ShoppingList.Business.Implementation.csproj", "{569010A6-7A9F-4D79-B3E1-99C56A2F2F20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Business.Tests", "ShoppingList.Business.Tests\ShoppingList.Business.Tests.csproj", "{37D2CCE9-7CE7-4F3B-9832-2F27964D1FA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Business.Tests", "ShoppingList.Business.Tests\ShoppingList.Business.Tests.csproj", "{37D2CCE9-7CE7-4F3B-9832-2F27964D1FA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Infrastructure", "ShoppingList.Infrastructure\ShoppingList.Infrastructure.csproj", "{4E10E3C2-063E-4122-A89D-0000407D2222}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Infrastructure", "ShoppingList.Infrastructure\ShoppingList.Infrastructure.csproj", "{4E10E3C2-063E-4122-A89D-0000407D2222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Infrastructure.Implementation", "ShoppingList.Infrastructure.Implementation\ShoppingList.Infrastructure.Implementation.csproj", "{0F0C401D-54E2-4342-9941-BE74B2B6DC94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Infrastructure.Implementation", "ShoppingList.Infrastructure.Implementation\ShoppingList.Infrastructure.Implementation.csproj", "{0F0C401D-54E2-4342-9941-BE74B2B6DC94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Infrastructure.Tests", "ShoppingList.Infrastructure.Tests\ShoppingList.Infrastructure.Tests.csproj", "{FC845127-5D74-450F-8081-536F0D8CC331}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Infrastructure.Tests", "ShoppingList.Infrastructure.Tests\ShoppingList.Infrastructure.Tests.csproj", "{FC845127-5D74-450F-8081-536F0D8CC331}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Database", "ShoppingList.Database\ShoppingList.Database.csproj", "{DF708CE9-8BD0-4076-AD4F-F0FB8C600365}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Entities", "ShoppingList.Entities\ShoppingList.Entities.csproj", "{826EFF8E-A241-493C-879B-8EC555277659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{FC845127-5D74-450F-8081-536F0D8CC331}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC845127-5D74-450F-8081-536F0D8CC331}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC845127-5D74-450F-8081-536F0D8CC331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF708CE9-8BD0-4076-AD4F-F0FB8C600365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF708CE9-8BD0-4076-AD4F-F0FB8C600365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF708CE9-8BD0-4076-AD4F-F0FB8C600365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF708CE9-8BD0-4076-AD4F-F0FB8C600365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{826EFF8E-A241-493C-879B-8EC555277659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{826EFF8E-A241-493C-879B-8EC555277659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{826EFF8E-A241-493C-879B-8EC555277659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{826EFF8E-A241-493C-879B-8EC555277659}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
