@@ -17,3 +17,5 @@ ShoppingList.Database/bin/
 ShoppingList.Entities/bin/
 ShoppingList.Api/obj/
 ShoppingList.Api/bin/
+ShoppingList.Api.Tests/bin/
+ShoppingList.Api.Tests/obj/
