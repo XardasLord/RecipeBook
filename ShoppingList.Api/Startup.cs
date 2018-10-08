@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ShoppingList.Business;
+using ShoppingList.Business.Implementation.Queries;
 using ShoppingList.Database;
 
 namespace ShoppingList.Api
@@ -31,6 +33,9 @@ namespace ShoppingList.Api
                 opts => opts.UseSqlServer(Configuration["ConnectionString:ShoppingListDB"], 
                 b => b.MigrationsAssembly("ShoppingList.Database"))
             );
+
+            services.AddTransient<IIngredientsQuery, IngredientsQuery>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
