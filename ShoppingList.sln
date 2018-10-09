@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Entities", "Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Api", "ShoppingList.Api\ShoppingList.Api.csproj", "{B37F6D15-2B9A-4546-9992-D7EF2BFB7F25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Api.Tests", "ShoppingList.Api.Tests\ShoppingList.Api.Tests.csproj", "{EB4CBF99-9578-4CF6-9AA7-B7A2ECF76EC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Api.Tests", "ShoppingList.Api.Tests\ShoppingList.Api.Tests.csproj", "{EB4CBF99-9578-4CF6-9AA7-B7A2ECF76EC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
