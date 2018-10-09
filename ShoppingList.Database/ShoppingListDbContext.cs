@@ -10,5 +10,6 @@ namespace ShoppingList.Database
         { }
 
         public DbSet<Ingredients> Ingredients { get; set; }
+        public DbSet<Recipes> Recipes { get; set; }
     }
 }
