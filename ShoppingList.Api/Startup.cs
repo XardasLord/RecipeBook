@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ShoppingList.Business;
 using ShoppingList.Business.Implementation.Queries;
+using ShoppingList.Business.Queries;
 using ShoppingList.Database;
 
 namespace ShoppingList.Api
@@ -35,6 +36,7 @@ namespace ShoppingList.Api
             );
 
             services.AddTransient<IIngredientsQuery, IngredientsQuery>();
+            services.AddTransient<IRecipesQuery, RecipesQuery>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
