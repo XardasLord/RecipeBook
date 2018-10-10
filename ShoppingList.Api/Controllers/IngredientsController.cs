@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Api.Controllers
 {
-
     [Route("api/[controller]")]
     public class IngredientsController : ControllerBase
     {

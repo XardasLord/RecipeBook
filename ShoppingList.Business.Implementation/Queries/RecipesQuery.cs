@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using ShoppingList.Business.Models;
 using ShoppingList.Business.Queries;
 using ShoppingList.Database;
-using ShoppingList.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,17 +12,21 @@ namespace ShoppingList.Business.Implementation.Queries
     public class RecipesQuery : IRecipesQuery
     {
         private readonly ShoppingListDbContext _shoppingListDbContext;
+        private readonly IMapper _mapper;
 
-        public RecipesQuery(ShoppingListDbContext shoppingListDbContext)
+        public RecipesQuery(ShoppingListDbContext shoppingListDbContext, IMapper mapper)
         {
             _shoppingListDbContext = shoppingListDbContext;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Recipes>> GetAllAsync()
+        public async Task<IEnumerable<RecipeModel>> GetAllAsync()
         {
-            return await _shoppingListDbContext.Recipes
+            var recipes = await _shoppingListDbContext.Recipes
                 .Where(x => !x.IsDeleted)
                 .ToListAsync();
+
+            return _mapper.Map<IEnumerable<RecipeModel>>(recipes);
         }
     }
 }
