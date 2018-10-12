@@ -5,6 +5,6 @@ namespace ShoppingList.Business.Services
 {
     public interface IRecipeService
     {
-        Task<int> Add(RecipeModel model);
+        Task<int> AddAsync(RecipeModel model);
     }
 }

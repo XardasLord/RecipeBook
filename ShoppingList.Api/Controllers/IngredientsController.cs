@@ -7,17 +7,17 @@ namespace ShoppingList.Api.Controllers
     [Route("api/[controller]")]
     public class IngredientsController : ControllerBase
     {
-        private readonly IIngredientQuery _ingredientsQuery;
+        private readonly IIngredientQuery _ingredientQuery;
 
-        public IngredientsController(IIngredientQuery ingredientsQuery)
+        public IngredientsController(IIngredientQuery ingredientQuery)
         {
-            _ingredientsQuery = ingredientsQuery;
+            _ingredientQuery = ingredientQuery;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _ingredientsQuery.GetAllAsync());
+            return Ok(await _ingredientQuery.GetAllAsync());
         }
     }
 }
