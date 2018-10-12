@@ -1,9 +1,10 @@
 ﻿using ShoppingList.Business.Models;
+using System.Threading.Tasks;
 
 namespace ShoppingList.Business.Services
 {
     public interface IRecipeService
     {
-        void Add(RecipeModel model);
+        Task<int> Add(RecipeModel model);
     }
 }
