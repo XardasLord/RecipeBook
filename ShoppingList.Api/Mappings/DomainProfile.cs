@@ -8,8 +8,8 @@ namespace ShoppingList.Api.Mappings
     {
         public DomainProfile()
         {
-            CreateMap<Ingredients, IngredientModel>().ReverseMap();
-            CreateMap<Recipes, RecipeModel>().ReverseMap();
+            CreateMap<Ingredient, IngredientModel>().ReverseMap();
+            CreateMap<Recipe, RecipeModel>().ReverseMap();
         }
     }
 }

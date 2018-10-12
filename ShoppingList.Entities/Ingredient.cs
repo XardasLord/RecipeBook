@@ -4,9 +4,9 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Ingredients : BaseEntity
+    public class Ingredient : BaseEntity
     {
-        public Ingredients()
+        public Ingredient()
         {
         }
 

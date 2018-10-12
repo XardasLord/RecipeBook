@@ -20,7 +20,7 @@ namespace ShoppingList.Business.Implementation.Services
 
         public async Task<int> Add(RecipeModel model)
         {
-            var recipe = _mapper.Map<Recipes>(model);
+            var recipe = _mapper.Map<Recipe>(model);
 
             await _shoppingListDbContext.Recipes.AddAsync(recipe);
 
