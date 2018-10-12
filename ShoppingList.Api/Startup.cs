@@ -14,7 +14,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ShoppingList.Business;
 using ShoppingList.Business.Implementation.Queries;
+using ShoppingList.Business.Implementation.Services;
 using ShoppingList.Business.Queries;
+using ShoppingList.Business.Services;
 using ShoppingList.Database;
 
 namespace ShoppingList.Api
@@ -36,8 +38,9 @@ namespace ShoppingList.Api
                 b => b.MigrationsAssembly("ShoppingList.Database"))
             );
 
-            services.AddTransient<IIngredientsQuery, IngredientsQuery>();
-            services.AddTransient<IRecipesQuery, RecipesQuery>();
+            services.AddTransient<IIngredientQuery, IngredientQuery>();
+            services.AddTransient<IRecipeQuery, RecipeQuery>();
+            services.AddTransient<IRecipeService, RecipeService>();
 
             services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

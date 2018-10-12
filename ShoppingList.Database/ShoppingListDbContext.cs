@@ -9,7 +9,7 @@ namespace ShoppingList.Database
             : base(options)
         { }
 
-        public DbSet<Ingredients> Ingredients { get; set; }
-        public DbSet<Recipes> Recipes { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
     }
 }
