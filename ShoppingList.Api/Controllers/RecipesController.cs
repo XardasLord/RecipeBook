@@ -12,9 +12,10 @@ namespace ShoppingList.Api.Controllers
         private readonly IRecipeQuery _recipeQuery;
         private readonly IRecipeService _recipeService;
 
-        public RecipesController(IRecipeQuery recipeQuery)
+        public RecipesController(IRecipeQuery recipeQuery, IRecipeService recipeService)
         {
             _recipeQuery = recipeQuery;
+            _recipeService = recipeService;
         }
 
         [HttpGet]
