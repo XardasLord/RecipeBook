@@ -7,9 +7,9 @@ namespace ShoppingList.Api.Controllers
     [Route("api/[controller]")]
     public class IngredientsController : ControllerBase
     {
-        private readonly IIngredientsQuery _ingredientsQuery;
+        private readonly IIngredientQuery _ingredientsQuery;
 
-        public IngredientsController(IIngredientsQuery ingredientsQuery)
+        public IngredientsController(IIngredientQuery ingredientsQuery)
         {
             _ingredientsQuery = ingredientsQuery;
         }

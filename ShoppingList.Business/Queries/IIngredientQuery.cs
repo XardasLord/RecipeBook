@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Business
 {
-    public interface IIngredientsQuery
+    public interface IIngredientQuery
     {
         Task<IEnumerable<IngredientModel>> GetAllAsync();
     }

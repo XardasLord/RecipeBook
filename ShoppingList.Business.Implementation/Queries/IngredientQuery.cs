@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Business.Implementation.Queries
 {
-    public class IngredientsQuery : IIngredientsQuery
+    public class IngredientQuery : IIngredientQuery
     {
         private readonly ShoppingListDbContext _shoppingListDbContext;
         private readonly IMapper _mapper;
 
-        public IngredientsQuery(ShoppingListDbContext shoppingListDbContext, IMapper mapper)
+        public IngredientQuery(ShoppingListDbContext shoppingListDbContext, IMapper mapper)
         {
             _shoppingListDbContext = shoppingListDbContext;
             _mapper = mapper;

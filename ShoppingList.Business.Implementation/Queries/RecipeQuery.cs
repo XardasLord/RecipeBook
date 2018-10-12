@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Business.Implementation.Queries
 {
-    public class RecipesQuery : IRecipesQuery
+    public class RecipeQuery : IRecipesQuery
     {
         private readonly ShoppingListDbContext _shoppingListDbContext;
         private readonly IMapper _mapper;
 
-        public RecipesQuery(ShoppingListDbContext shoppingListDbContext, IMapper mapper)
+        public RecipeQuery(ShoppingListDbContext shoppingListDbContext, IMapper mapper)
         {
             _shoppingListDbContext = shoppingListDbContext;
             _mapper = mapper;

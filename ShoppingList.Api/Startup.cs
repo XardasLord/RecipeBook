@@ -36,8 +36,8 @@ namespace ShoppingList.Api
                 b => b.MigrationsAssembly("ShoppingList.Database"))
             );
 
-            services.AddTransient<IIngredientsQuery, IngredientsQuery>();
-            services.AddTransient<IRecipesQuery, RecipesQuery>();
+            services.AddTransient<IIngredientQuery, IngredientQuery>();
+            services.AddTransient<IRecipesQuery, RecipeQuery>();
 
             services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
