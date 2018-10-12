@@ -7,9 +7,9 @@ namespace ShoppingList.Api.Controllers
     [Route("api/[controller]")]
     public class RecipesController : ControllerBase
     {
-        private readonly IRecipesQuery _recipesQuery;
+        private readonly IRecipeQuery _recipesQuery;
 
-        public RecipesController(IRecipesQuery recipesQuery)
+        public RecipesController(IRecipeQuery recipesQuery)
         {
             _recipesQuery = recipesQuery;
         }

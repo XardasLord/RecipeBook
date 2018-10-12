@@ -37,7 +37,7 @@ namespace ShoppingList.Api
             );
 
             services.AddTransient<IIngredientQuery, IngredientQuery>();
-            services.AddTransient<IRecipesQuery, RecipeQuery>();
+            services.AddTransient<IRecipeQuery, RecipeQuery>();
 
             services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

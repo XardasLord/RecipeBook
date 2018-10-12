@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.Business.Implementation.Queries
 {
-    public class RecipeQuery : IRecipesQuery
+    public class RecipeQuery : IRecipeQuery
     {
         private readonly ShoppingListDbContext _shoppingListDbContext;
         private readonly IMapper _mapper;
