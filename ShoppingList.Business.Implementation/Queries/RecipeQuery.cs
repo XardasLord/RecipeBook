@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Queries;
 using ShoppingList.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +28,15 @@ namespace ShoppingList.Business.Implementation.Queries
                 .ToListAsync();
 
             return _mapper.Map<IEnumerable<RecipeModel>>(recipes);
+        }
+
+        public async Task<RecipeModel> GetAsync(Guid id)
+        {
+            var recipe = await _shoppingListDbContext.Recipes
+                .Where(x => x.Id == id && !x.IsDeleted)
+                .FirstOrDefaultAsync();
+
+            return _mapper.Map<RecipeModel>(recipe);
         }
     }
 }

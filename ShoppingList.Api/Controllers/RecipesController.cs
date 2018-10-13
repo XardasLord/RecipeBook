@@ -2,6 +2,7 @@
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Queries;
 using ShoppingList.Business.Services;
+using System;
 using System.Threading.Tasks;
 
 namespace ShoppingList.Api.Controllers
@@ -22,6 +23,12 @@ namespace ShoppingList.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _recipeQuery.GetAllAsync());
+        }
+
+        [HttpGet("/{id}")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            return Ok(await _recipeQuery.GetAsync(id));
         }
 
         [HttpPost]
