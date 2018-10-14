@@ -34,16 +34,9 @@ namespace ShoppingList.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] RecipeModel model)
         {
-            var result = await _recipeService.AddAsync(model);
+            await _recipeService.AddAsync(model);
 
-            if (result > 0)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest("Recipe save failed");
-            }
+            return CreatedAtAction("Get", new {id = model.Id}, model);
         }
     }
 }

@@ -18,13 +18,14 @@ namespace ShoppingList.Business.Implementation.Services
             _mapper = mapper;
         }
 
-        public async Task<int> AddAsync(RecipeModel model)
+        public async Task AddAsync(RecipeModel model)
         {
             var recipe = _mapper.Map<Recipe>(model);
 
             _shoppingListDbContext.Recipes.Add(recipe);
+            await _shoppingListDbContext.SaveChangesAsync();
 
-            return await _shoppingListDbContext.SaveChangesAsync();
+            model.Id = recipe.Id;
         }
     }
 }
