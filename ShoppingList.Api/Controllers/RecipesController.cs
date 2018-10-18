@@ -34,9 +34,10 @@ namespace ShoppingList.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] RecipeModel model)
         {
-            await _recipeService.AddAsync(model);
+            var createdId = await _recipeService.AddAsync(model);
+            model.Id = createdId;
 
-            return CreatedAtAction("Get", new {id = model.Id}, model);
+            return CreatedAtAction("Get", new { id = createdId }, model);
         }
     }
 }

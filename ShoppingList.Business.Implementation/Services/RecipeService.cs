@@ -3,6 +3,7 @@ using ShoppingList.Business.Models;
 using ShoppingList.Business.Services;
 using ShoppingList.Database;
 using ShoppingList.Entities;
+using System;
 using System.Threading.Tasks;
 
 namespace ShoppingList.Business.Implementation.Services
@@ -18,14 +19,14 @@ namespace ShoppingList.Business.Implementation.Services
             _mapper = mapper;
         }
 
-        public async Task AddAsync(RecipeModel model)
+        public async Task<Guid> AddAsync(RecipeModel model)
         {
             var recipe = _mapper.Map<Recipe>(model);
 
             _shoppingListDbContext.Recipes.Add(recipe);
             await _shoppingListDbContext.SaveChangesAsync();
 
-            model.Id = recipe.Id;
+            return recipe.Id;
         }
     }
 }
