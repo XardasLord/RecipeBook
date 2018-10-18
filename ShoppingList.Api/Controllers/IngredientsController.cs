@@ -25,7 +25,7 @@ namespace ShoppingList.Api.Controllers
             return Ok(await _ingredientQuery.GetAllAsync());
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await _ingredientQuery.GetAsync(id));
