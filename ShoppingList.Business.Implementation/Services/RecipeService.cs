@@ -4,6 +4,7 @@ using ShoppingList.Business.Services;
 using ShoppingList.Database;
 using ShoppingList.Entities;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShoppingList.Business.Implementation.Services
@@ -27,6 +28,25 @@ namespace ShoppingList.Business.Implementation.Services
             await _shoppingListDbContext.SaveChangesAsync();
 
             return recipe.Id;
+        }
+
+        public async Task Update(RecipeModel model)
+        {
+            var recipeParts = _shoppingListDbContext.Recipes
+                .Where(x => x.Id == model.Id)
+                .SelectMany(x => x.RecipeParts)
+                .ToList();
+
+            foreach (var recipePart in recipeParts)
+            {
+                recipePart.IsDeleted = true;
+                recipePart.DeletedAt = DateTime.Now; // TODO: Maybe do it somewhere in the override SaveChanges function in ShoppingList.Database project?
+            }
+
+            var recipe = _mapper.Map<Recipe>(model);
+
+            _shoppingListDbContext.Recipes.Add(recipe);
+            await _shoppingListDbContext.SaveChangesAsync();
         }
     }
 }

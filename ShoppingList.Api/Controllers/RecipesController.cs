@@ -39,5 +39,13 @@ namespace ShoppingList.Api.Controllers
 
             return CreatedAtAction("Get", new { id = createdId }, model);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] RecipeModel model)
+        {
+            await _recipeService.Update(model);
+
+            return NoContent();
+        }
     }
 }
