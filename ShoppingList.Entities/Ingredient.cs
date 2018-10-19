@@ -15,7 +15,6 @@ namespace ShoppingList.Entities
         [Key]
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public int Amount { get; set; }
         public virtual IEnumerable<RecipePart> RecipeParts { get; set; }
     }
 }
