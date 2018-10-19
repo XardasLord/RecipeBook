@@ -43,7 +43,15 @@ namespace ShoppingList.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] RecipeModel model)
         {
-            await _recipeService.Update(model);
+            await _recipeService.UpdateAsync(model);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _recipeService.DeleteAsync(id);
 
             return NoContent();
         }

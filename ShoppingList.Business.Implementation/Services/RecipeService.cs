@@ -30,7 +30,7 @@ namespace ShoppingList.Business.Implementation.Services
             return recipe.Id;
         }
 
-        public async Task Update(RecipeModel model)
+        public async Task UpdateAsync(RecipeModel model)
         {
             var recipeParts = _shoppingListDbContext.Recipes
                 .Where(x => x.Id == model.Id)
@@ -47,6 +47,21 @@ namespace ShoppingList.Business.Implementation.Services
 
             _shoppingListDbContext.Recipes.Add(recipe);
             await _shoppingListDbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var recipe = _shoppingListDbContext.Recipes
+                .FirstOrDefault(x => x.Id == id);
+
+            if (recipe != null)
+            {
+                recipe.IsDeleted = true;
+                recipe.DeletedAt = DateTime.Now; // TODO: Maybe do it somewhere in the override SaveChanges function in ShoppingList.Database project?
+
+                await _shoppingListDbContext.SaveChangesAsync();
+            }
+
         }
     }
 }
