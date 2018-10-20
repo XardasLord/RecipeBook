@@ -1,12 +1,8 @@
 export class Ingredient {
+    id: string;
+    name: string;
 
-    constructor(public name: string) {}
-
-/*     public name: string;
-    public amount: number;
-
-    constructor(name: string, amount: number) {
+    constructor(name: string) {
         this.name = name;
-        this.amount = amount;
-    } */
+    }
 }
