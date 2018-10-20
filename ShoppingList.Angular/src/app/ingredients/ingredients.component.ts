@@ -15,6 +15,9 @@ export class IngredientsComponent implements OnInit {
 
   ngOnInit() {
     // Get all ingredients from API
+    this.ingredientService.getAll().subscribe(ingredients => {
+      this.ingredients = ingredients;
+    });
   }
 
 }
