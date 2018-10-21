@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { IngredientService } from '../../shared/services/ingredient.service';
 import { Ingredient } from '../../shared/ingredient.model';
 
@@ -9,23 +10,28 @@ import { Ingredient } from '../../shared/ingredient.model';
   styleUrls: ['./ingredient-edit.component.css']
 })
 export class IngredientEditComponent implements OnInit {
-  @ViewChild('f') ingredientForm: NgForm;
+  ingredientForm: FormGroup;
 
   constructor(private ingredientService: IngredientService) { }
 
   ngOnInit() {
+    this.initForm();
   }
 
-  onSubmit(form: NgForm) {
-    const newIngredient = new Ingredient(form.value.name);
+  private initForm() {
+    this.ingredientForm = new FormGroup({
+      'name': new FormControl(null, Validators.required)
+    });
+  }
 
-    this.ingredientService.add(newIngredient).subscribe(() => {
-      // TODO: Information about succesfull ingredient add
+  onSubmit() {
+    const ingredientToAdd = new Ingredient(this.ingredientForm.value['name']);
+
+    this.ingredientService.add(ingredientToAdd).subscribe(newIngredient => {
+      // TODO: Information about successful ingredient add
       // ...
       this.ingredientService.ingredientsChanged.next(newIngredient);
       this.ingredientForm.reset();
     });
-
   }
-
 }
