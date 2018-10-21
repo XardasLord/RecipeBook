@@ -15,7 +15,7 @@ export class IngredientService {
     return this.http.get<Ingredient[]>(`https://localhost:44373/api/ingredients`);
   }
 
-  add(ingredient: Ingredient) {
-    return this.http.post(`https://localhost:44373/api/ingredients`, ingredient);
+  add(ingredient: Ingredient): Observable<Ingredient> {
+    return this.http.post<Ingredient>(`https://localhost:44373/api/ingredients`, ingredient);
   }
 }
