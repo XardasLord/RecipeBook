@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <img 
-      [src]="recipe.imagePath" 
+      [src]="recipe.imageUrl" 
       alt="{{ recipe.name }}" 
       class="img-response"
       style="max-height: 300px;">
@@ -40,8 +40,8 @@
     <ul class="list-group">
       <li 
         class="list-group-item" 
-        *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.name }} - {{ ingredient.amount }}
+        *ngFor="let recipePart of recipe.recipeParts">
+        {{ recipePart.ingredient.name }} - {{ recipePart.quantity }}
       </li>
     </ul>
   </div>
