@@ -39,10 +39,24 @@ namespace ShoppingList.Api
             );
 
             services.AddTransient<IIngredientQuery, IngredientQuery>();
+            services.AddTransient<IIngredientService, IngredientService>();
             services.AddTransient<IRecipeQuery, RecipeQuery>();
             services.AddTransient<IRecipeService, RecipeService>();
 
             services.AddAutoMapper();
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                    });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -59,6 +73,7 @@ namespace ShoppingList.Api
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("AllowAll");
             app.UseMvc();
         }
     }
