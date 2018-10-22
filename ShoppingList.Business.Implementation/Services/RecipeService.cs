@@ -45,7 +45,7 @@ namespace ShoppingList.Business.Implementation.Services
 
             var recipe = _mapper.Map<Recipe>(model);
 
-            _shoppingListDbContext.Recipes.Add(recipe);
+            _shoppingListDbContext.Recipes.Update(recipe);
             await _shoppingListDbContext.SaveChangesAsync();
         }
 
