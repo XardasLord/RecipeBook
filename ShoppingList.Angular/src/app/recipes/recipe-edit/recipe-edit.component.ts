@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -9,6 +10,7 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent implements OnInit {
+  recipeOnForm = new Recipe('', '', '', []); // TODO: To fix...
   id: string;
   editMode = false;
   recipeForm: FormGroup;
@@ -32,13 +34,11 @@ export class RecipeEditComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.recipeForm.value).subscribe(updatedRecipe => {
-        // TODO: Changed updated recipe on the list
-        // ...
+        this.recipeService.recipeUpdated.next(updatedRecipe);
       });
     } else {
       this.recipeService.addRecipe(this.recipeForm.value).subscribe(createdRecipe => {
-        // TODO: Add created recipe to the list
-        // ...
+        this.recipeService.recipesChanged.next(createdRecipe);
       });
     }
 
@@ -66,37 +66,36 @@ export class RecipeEditComponent implements OnInit {
   }
 
   private initForm() {
-    let recipeName = '';
-    let recipeImageUrl = '';
-    let recipeDescription = '';
     const recipeParts = new FormArray([]);
 
     if (this.editMode) {
       this.recipeService.getRecipe(this.id).subscribe(recipe => {
-        recipeName = recipe.name;
-        recipeImageUrl = recipe.imageUrl;
-        recipeDescription = recipe.description;
 
-        if (recipe.recipeParts) {
-          recipe.recipeParts.forEach(recipePart => {
-            recipeParts.push(
-              new FormGroup({
-                'name': new FormControl(recipePart.ingredient.name, Validators.required),
-                'quantity': new FormControl(recipePart.quantity, [
-                  Validators.required,
-                  Validators.pattern(/^[1-9]+[0-9]*$/)
-                ])
-              })
-            );
-          });
-        }
+        recipe.recipeParts.forEach(recipePart => {
+          recipeParts.push(
+            new FormGroup({
+              'name': new FormControl(recipePart.ingredient.name, Validators.required),
+              'quantity': new FormControl(recipePart.quantity, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/)
+              ])
+            })
+          );
+        });
+
+        this.recipeForm.controls['id'].setValue(recipe.id);
+        this.recipeForm.controls['name'].setValue(recipe.name);
+        this.recipeForm.controls['imageUrl'].setValue(recipe.imageUrl);
+        this.recipeForm.controls['description'].setValue(recipe.description);
+        console.log(this.recipeForm);
       });
     }
 
     this.recipeForm = new FormGroup({
-      'name': new FormControl(recipeName, Validators.required),
-      'imageUrl': new FormControl(recipeImageUrl, Validators.required),
-      'description': new FormControl(recipeDescription, Validators.required),
+      'id': new FormControl(this.recipeOnForm.id),
+      'name': new FormControl(this.recipeOnForm.name, Validators.required),
+      'imageUrl': new FormControl(this.recipeOnForm.imageUrl, Validators.required),
+      'description': new FormControl(this.recipeOnForm.description, Validators.required),
       'recipeParts': recipeParts
     });
   }

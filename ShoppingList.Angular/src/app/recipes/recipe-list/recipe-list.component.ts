@@ -13,14 +13,19 @@ import { RecipeService } from '../recipe.service';
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
   subscription: Subscription;
+  subscription2: Subscription;
 
   constructor(private recipeService: RecipeService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription = this.recipeService.recipesChanged.subscribe(recipes => {
-      this.recipes = recipes;
+    this.subscription = this.recipeService.recipesChanged.subscribe(createdRecipe => {
+      this.recipes.push(createdRecipe);
+    });
+    this.subscription2 = this.recipeService.recipeUpdated.subscribe(updatedRecipe => {
+      const index = this.recipes.findIndex(x => x.id === updatedRecipe.id);
+      this.recipes[index] = updatedRecipe;
     });
 
     this.recipeService.getRecipes().subscribe(recipes => {
@@ -30,6 +35,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscription2.unsubscribe();
   }
 
   onNewRecipe() {

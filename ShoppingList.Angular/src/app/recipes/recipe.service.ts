@@ -10,7 +10,8 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
   providedIn: 'root'
 })
 export class RecipeService {
-  recipesChanged = new Subject<Recipe[]>();
+  recipesChanged = new Subject<Recipe>();
+  recipeUpdated = new Subject<Recipe>();
 
   constructor(private shoppingListService: ShoppingListService,
               private http: HttpClient) { }
