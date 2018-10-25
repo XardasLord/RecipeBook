@@ -10,6 +10,7 @@ namespace ShoppingList.Api.Mappings
         {
             CreateMap<Ingredient, IngredientModel>().ReverseMap();
             CreateMap<Recipe, RecipeModel>().ReverseMap();
+            CreateMap<RecipePart, RecipePartModel>().ReverseMap();
         }
     }
 }
