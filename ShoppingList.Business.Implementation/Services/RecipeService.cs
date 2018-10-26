@@ -24,6 +24,11 @@ namespace ShoppingList.Business.Implementation.Services
         {
             var recipe = _mapper.Map<Recipe>(model);
 
+            foreach (var recipePart in recipe.RecipeParts)
+            {
+                _shoppingListDbContext.Ingredients.Attach(recipePart.Ingredient);
+            }
+
             _shoppingListDbContext.Recipes.Add(recipe);
             await _shoppingListDbContext.SaveChangesAsync();
 

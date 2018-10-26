@@ -58,6 +58,16 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-xs-12">
+          <ng-select 
+            [items]="ingredients"
+            bindLabel="name"
+            bindValue="id"
+            (change)="onSelectIngredient($event)">
+          </ng-select>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-xs-12" formArrayName="recipeParts">
           <div class="row"
                *ngFor="let ingredientControl of recipeForm.get('recipeParts').controls; let i=index"
@@ -65,9 +75,19 @@
                style="margin-top: 10px;">
             <div class="col-xs-8">
               <input 
-                type="text"
-                class="form-control"
-                formControlName="name">
+                type="hidden"
+                formControlName="id">
+            </div>
+            <div formGroupName="ingredient">
+              <input 
+                type="hidden"
+                formControlName="id">
+              <div class="col-xs-8">
+                <input 
+                  type="text"
+                  class="form-control"
+                  formControlName="name">
+              </div>
             </div>
             <div class="col-xs-2">
               <input 
