@@ -33,6 +33,8 @@ namespace ShoppingList.Business.Implementation.Queries
         public async Task<RecipeModel> GetAsync(Guid id)
         {
             var recipe = await _shoppingListDbContext.Recipes
+                .Include(x => x.RecipeParts)
+                .ThenInclude(x => x.Ingredient)
                 .Where(x => x.Id == id && !x.IsDeleted)
                 .FirstOrDefaultAsync();
 
