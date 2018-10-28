@@ -45,7 +45,7 @@ namespace ShoppingList.Api.Controllers
         {
             await _recipeService.UpdateAsync(model);
 
-            return NoContent();
+            return CreatedAtAction("Get", new { id = model.Id }, model);
         }
 
         [HttpDelete("{id}")]

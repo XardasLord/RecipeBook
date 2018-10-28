@@ -12,7 +12,7 @@ import { IngredientService } from 'src/app/shared/services/ingredient.service';
   styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent implements OnInit {
-  activeRecipe = new Recipe('', '', '', []); // TODO: To fix...
+  activeRecipe = new Recipe();
   ingredients: Ingredient[] = [];
   selectedIngredient: Ingredient;
   id: string;
@@ -43,6 +43,7 @@ export class RecipeEditComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.recipeForm.value).subscribe(updatedRecipe => {
+        console.log(updatedRecipe);
         this.recipeService.recipeUpdated.next(updatedRecipe);
       });
     } else {

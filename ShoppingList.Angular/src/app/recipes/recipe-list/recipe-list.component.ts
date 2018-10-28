@@ -10,20 +10,19 @@ import { RecipeService } from '../recipe.service';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit, OnDestroy {
+export class RecipeListComponent implements OnInit {
   recipes: Recipe[];
-  subscription: Subscription;
-  subscription2: Subscription;
 
   constructor(private recipeService: RecipeService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription = this.recipeService.recipesChanged.subscribe(createdRecipe => {
+    this.recipeService.recipesChanged.subscribe(createdRecipe => {
       this.recipes.push(createdRecipe);
     });
-    this.subscription2 = this.recipeService.recipeUpdated.subscribe(updatedRecipe => {
+
+    this.recipeService.recipeUpdated.subscribe(updatedRecipe => {
       const index = this.recipes.findIndex(x => x.id === updatedRecipe.id);
       this.recipes[index] = updatedRecipe;
     });
@@ -31,11 +30,6 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     this.recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
     });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.subscription2.unsubscribe();
   }
 
   onNewRecipe() {
