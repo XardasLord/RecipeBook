@@ -15,7 +15,7 @@ export class RecipeEditComponent implements OnInit {
   activeRecipe = new Recipe();
   ingredients: Ingredient[] = [];
   selectedIngredient: Ingredient;
-  id: string;
+  recipeId: string;
   editMode = false;
   recipeForm: FormGroup;
 
@@ -30,7 +30,7 @@ export class RecipeEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
+      this.recipeId = params['id'];
       this.editMode = params['id'] != null;
       this.initForm();
     });
@@ -43,7 +43,6 @@ export class RecipeEditComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.recipeForm.value).subscribe(updatedRecipe => {
-        console.log(updatedRecipe);
         this.recipeService.recipeUpdated.next(updatedRecipe);
       });
     } else {
@@ -63,6 +62,7 @@ export class RecipeEditComponent implements OnInit {
           id: new FormControl(this.selectedIngredient.id),
           name: new FormControl(this.selectedIngredient.name, Validators.required),
         }),
+        unit: new FormControl(null, Validators.required),
         quantity: new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]+[0-9]*$/)
@@ -87,7 +87,7 @@ export class RecipeEditComponent implements OnInit {
     const recipeParts = new FormArray([]);
 
     if (this.editMode) {
-      this.recipeService.getRecipe(this.id).subscribe(recipe => {
+      this.recipeService.getRecipe(this.recipeId).subscribe(recipe => {
 
         recipe.recipeParts.forEach(recipePart => {
           recipeParts.push(
@@ -97,6 +97,7 @@ export class RecipeEditComponent implements OnInit {
                 id: new FormControl(recipePart.ingredient.id),
                 name: new FormControl(recipePart.ingredient.name, Validators.required),
               }),
+              unit: new FormControl(recipePart.unit, Validators.required),
               quantity: new FormControl(recipePart.quantity, [
                 Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/)
