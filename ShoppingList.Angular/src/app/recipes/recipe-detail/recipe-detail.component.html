@@ -14,23 +14,20 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div 
-      class="button-group"
-      appDropdown>
-      <button 
-        type="button" 
-        class="btn btn-primary dropdown-toggle">
-        Manage Recipe <span class="caret"></span>
+    <div class="button-group">
+      <button type="button" class="btn btn-primary" style="margin-right: 5px;" (click)="onAddToShoppingList()">
+        To Shopping List
       </button>
-      <ul class="dropdown-menu">
-        <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
-        <li><a style="cursor: pointer;" (click)="onRecipeEdit()">Edit Recipe</a></li>
-        <li><a style="cursor: pointer;" (click)="onRecipeDelete()">Delete Recipe</a></li>
-      </ul>
+      <button type="button" class="btn btn-success" style="margin-right: 5px;" (click)="onRecipeEdit()">
+          Edit Recipe
+        </button>
+      <button type="button" class="btn btn-danger" style="margin-right: 5px;" (click)="onRecipeDelete()">
+          Delete Recipe
+      </button>
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row" style="margin-bottom: 15px; margin-top: 15px;">
   <div class="col-xs-12">
     {{ recipe.description }}
   </div>
@@ -41,7 +38,7 @@
       <li 
         class="list-group-item" 
         *ngFor="let recipePart of recipe.recipeParts">
-        {{ recipePart.ingredient.name }} - {{ recipePart.quantity }} ({{ recipePart.unit}})
+        {{ recipePart.ingredient.name }}: {{ recipePart.quantity }} ({{ recipePart.unit}})
       </li>
     </ul>
   </div>
