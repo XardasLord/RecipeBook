@@ -12,10 +12,10 @@ namespace ShoppingList.Business.Implementation.Queries
 {
     public class RecipeQuery : IRecipeQuery
     {
-        private readonly ShoppingListDbContext _shoppingListDbContext;
+        private readonly IShoppingListDbContext _shoppingListDbContext;
         private readonly IMapper _mapper;
 
-        public RecipeQuery(ShoppingListDbContext shoppingListDbContext, IMapper mapper)
+        public RecipeQuery(IShoppingListDbContext shoppingListDbContext, IMapper mapper)
         {
             _shoppingListDbContext = shoppingListDbContext;
             _mapper = mapper;

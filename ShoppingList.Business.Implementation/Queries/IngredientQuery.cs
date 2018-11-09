@@ -11,10 +11,10 @@ namespace ShoppingList.Business.Implementation.Queries
 {
     public class IngredientQuery : IIngredientQuery
     {
-        private readonly ShoppingListDbContext _shoppingListDbContext;
+        private readonly IShoppingListDbContext _shoppingListDbContext;
         private readonly IMapper _mapper;
 
-        public IngredientQuery(ShoppingListDbContext shoppingListDbContext, IMapper mapper)
+        public IngredientQuery(IShoppingListDbContext shoppingListDbContext, IMapper mapper)
         {
             _shoppingListDbContext = shoppingListDbContext;
             _mapper = mapper;

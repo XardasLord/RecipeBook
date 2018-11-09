@@ -11,10 +11,10 @@ namespace ShoppingList.Business.Implementation.Services
 {
     public class RecipeService : IRecipeService
     {
-        private readonly ShoppingListDbContext _shoppingListDbContext;
+        private readonly IShoppingListDbContext _shoppingListDbContext;
         private readonly IMapper _mapper;
 
-        public RecipeService(ShoppingListDbContext shoppingListDbContext, IMapper mapper)
+        public RecipeService(IShoppingListDbContext shoppingListDbContext, IMapper mapper)
         {
             _shoppingListDbContext = shoppingListDbContext;
             _mapper = mapper;
