@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Queries;
 using ShoppingList.Business.Services;
-using System;
-using System.Threading.Tasks;
 
 namespace ShoppingList.Api.Controllers
 {
@@ -15,6 +15,7 @@ namespace ShoppingList.Api.Controllers
 
         public RecipesController(IRecipeQuery recipeQuery, IRecipeService recipeService)
         {
+            _recipeQuery = recipeQuery;
             _recipeQuery = recipeQuery;
             _recipeService = recipeService;
         }
