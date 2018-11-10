@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12">
     <img 
       [src]="recipe.imageUrl" 
       alt="{{ recipe.name }}" 
@@ -8,32 +8,30 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12">
     <h1>{{ recipe.name }}</h1>
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
-    <div class="button-group">
-      <button type="button" class="btn btn-primary" style="margin-right: 5px;" (click)="onAddToShoppingList()">
-        To Shopping List
-      </button>
-      <button type="button" class="btn btn-success" style="margin-right: 5px;" (click)="onRecipeEdit()">
-          Edit Recipe
-        </button>
-      <button type="button" class="btn btn-danger" style="margin-right: 5px;" (click)="onRecipeDelete()">
-          Delete Recipe
-      </button>
-    </div>
+  <div class="col-12">
+    <button type="button" class="btn btn-primary" (click)="onAddToShoppingList()">
+      To Shopping List
+    </button>&nbsp;
+    <button type="button" class="btn btn-success" (click)="onRecipeEdit()">
+        Edit Recipe
+    </button>&nbsp;
+    <button type="button" class="btn btn-danger" (click)="onRecipeDelete()">
+        Delete Recipe
+    </button>
   </div>
 </div>
 <div class="row" style="margin-bottom: 15px; margin-top: 15px;">
-  <div class="col-xs-12">
+  <div class="col-12">
     {{ recipe.description }}
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12">
     <ul class="list-group">
       <li 
         class="list-group-item" 

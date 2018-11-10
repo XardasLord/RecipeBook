@@ -1,0 +1,9 @@
+a {
+  color: #000;
+}
+
+a.active {
+  background-color: lightgray !important;
+  color: #000;
+  border-color: gray;
+}
