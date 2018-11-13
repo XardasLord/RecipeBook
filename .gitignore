@@ -19,3 +19,5 @@ ShoppingList.Api/obj/
 ShoppingList.Api/bin/
 ShoppingList.Api.Tests/bin/
 ShoppingList.Api.Tests/obj/
+ShoppingList.CommonUtilities/bin/
+ShoppingList.CommonUtilities/obj/
