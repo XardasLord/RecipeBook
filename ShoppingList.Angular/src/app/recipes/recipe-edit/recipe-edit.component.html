@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12">
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <button 
             type="submit" 
             class="btn btn-success"
-            [disabled]="!recipeForm.valid">Save</button>
+            [disabled]="!recipeForm.valid">Save</button>&nbsp;
           <button 
             type="button" 
             class="btn btn-danger"
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <div class="form-group">
             <label name="name">Name</label>
             <input 
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <div class="form-group">
             <label name="imageUrl">Image URL</label>
             <input 
@@ -39,12 +39,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
-          <img [src]="imageUrl.value" class="img-responsive">
+        <div class="col-12">
+          <img [src]="imageUrl.value" class="img-fluid">
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <div class="form-group">
             <label name="description">Description</label>
             <textarea 
@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <ng-select 
             [items]="ingredients"
             bindLabel="name"
@@ -68,12 +68,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12" formArrayName="recipeParts">
+        <div class="col-12" formArrayName="recipeParts">
           <div class="row"
                *ngFor="let ingredientControl of recipeForm.get('recipeParts').controls; let i=index"
                [formGroupName]="i"
                style="margin-top: 10px;">
-            <div class="col-xs-8">
+            <div class="col-8">
               <input 
                 type="hidden"
                 formControlName="id">
@@ -82,26 +82,26 @@
               <input 
                 type="hidden"
                 formControlName="id">
-              <div class="col-xs-6">
+              <div class="col-12">
                 <input 
                   type="text"
                   class="form-control"
                   formControlName="name">
               </div>
             </div>
-            <div class="col-xs-2">
+            <div class="col-2">
               <input 
                 type="number"
                 class="form-control"
                 formControlName="quantity">
             </div>
-            <div class="col-xs-2">
+            <div class="col-2">
               <input 
                 type="text"
                 class="form-control"
                 formControlName="unit">
             </div>
-            <div class="col-xs-2">
+            <div class="col-2">
               <button 
                 type="button"
                 class="btn btn-danger"
@@ -113,7 +113,7 @@
         </div>
         <hr>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-12">
             <button class="btn btn-success"
                     type="button"
                     (click)="onAddIngredient()">Add Ingredient</button>
