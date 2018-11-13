@@ -4,6 +4,6 @@ namespace ShoppingList.CommonUtilities
 {
     public interface IGuidGenerator
     {
-        Guid GenerateId();
+        Guid Generate();
     }
 }

@@ -12,7 +12,7 @@ namespace ShoppingList.CommonUtilities
             _randomNumberGenerator = new RNGCryptoServiceProvider();
         }
 
-        public Guid GenerateId()
+        public Guid Generate()
         {
             long timestamp = DateTime.UtcNow.Ticks / 10000L;
             byte[] guidBytes = new byte[16];
