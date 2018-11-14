@@ -11,6 +11,6 @@ namespace ShoppingList.Entities
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public string Description { get; set; }
-        public virtual IEnumerable<RecipePart> RecipeParts { get; set; }
+        public virtual ICollection<RecipePart> RecipeParts { get; set; }
     }
 }
