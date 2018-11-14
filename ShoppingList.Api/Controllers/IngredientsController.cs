@@ -19,18 +19,21 @@ namespace ShoppingList.Api.Controllers
             _ingredientService = ingredientService;
         }
 
+        // GET: api/Ingredients
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _ingredientQuery.GetAllAsync());
         }
 
+        // GET: api/Ingredients/00000000-0000-0000-0000-000000000000
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await _ingredientQuery.GetAsync(id));
         }
 
+        // POST: api/Ingredients
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] IngredientModel model)
         {
