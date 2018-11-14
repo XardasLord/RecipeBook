@@ -1,7 +1,7 @@
 ﻿using System;
-using ShoppingList.Business.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ShoppingList.Business.Models;
 
 namespace ShoppingList.Business
 {

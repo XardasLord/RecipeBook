@@ -16,22 +16,24 @@ namespace ShoppingList.Api.Controllers
         public RecipesController(IRecipeQuery recipeQuery, IRecipeService recipeService)
         {
             _recipeQuery = recipeQuery;
-            _recipeQuery = recipeQuery;
             _recipeService = recipeService;
         }
 
+        // GET: api/Recipes
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _recipeQuery.GetAllAsync());
         }
 
+        // GET: api/Recipes/00000000-0000-0000-0000-000000000000
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await _recipeQuery.GetAsync(id));
         }
 
+        // POST: api/Recipes
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] RecipeModel model)
         {
@@ -41,6 +43,8 @@ namespace ShoppingList.Api.Controllers
             return CreatedAtAction("Get", new { id = createdId }, model);
         }
 
+        //TODO: Add ID parameter getting from route
+        // PUT: api/Recipes
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] RecipeModel model)
         {
@@ -49,6 +53,7 @@ namespace ShoppingList.Api.Controllers
             return CreatedAtAction("Get", new { id = model.Id }, model);
         }
 
+        // DELETE: api/Recipes/00000000-0000-0000-0000-000000000000
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

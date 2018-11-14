@@ -1,12 +1,12 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Queries;
 using ShoppingList.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ShoppingList.Business.Implementation.Queries
 {
