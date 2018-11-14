@@ -7,6 +7,7 @@ The project requirements are growing all the time and new features are adding on
 ## Project structure
 * **ShoppingList.Entities** - contains database entity classes.
 * **ShoppingList.Database** - contains DbContexts and database migrations
+* **ShoppingList.CommonUtilities** - this project will contain all cross-cutting concerns
 * **ShoppingList.Domain** - its aim is to cover the bussiness logic. The Domain project has 3 subprojects:
   - **Domain** - contains abstractions like interfaces for services and queries and also contains class models for the view which are passing to the frontend user
   - **Implementation** -  contains implementations for services and queries from the Domain interfaces.
