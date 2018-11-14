@@ -32,7 +32,7 @@ namespace ShoppingList.Database
                 //TODO: ModifiedBy
                 entry.ModifiedAt = DateTime.Now;
             }
-            
+
             return await base.SaveChangesAsync(cancellationToken);
         }
     }

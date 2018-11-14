@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Services;
-using System;
-using System.Threading.Tasks;
 
 namespace ShoppingList.Api.Controllers
 {

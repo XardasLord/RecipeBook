@@ -1,11 +1,11 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Services;
 using ShoppingList.Database;
 using ShoppingList.Entities;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ShoppingList.Business.Implementation.Services
 {

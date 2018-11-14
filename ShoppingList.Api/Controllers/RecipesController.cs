@@ -16,7 +16,6 @@ namespace ShoppingList.Api.Controllers
         public RecipesController(IRecipeQuery recipeQuery, IRecipeService recipeService)
         {
             _recipeQuery = recipeQuery;
-            _recipeQuery = recipeQuery;
             _recipeService = recipeService;
         }
 
