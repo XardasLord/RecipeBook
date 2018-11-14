@@ -22,10 +22,17 @@ namespace ShoppingList.Database
         {
             foreach (var entity in ChangeTracker.Entries().Where(e => e.State == EntityState.Added).Select(e => e.Entity as BaseEntity))
             {
+                //TODO: CreatedBy
                 entity.Id = entity.Id != Guid.Empty ? entity.Id : _guidGenerator.Generate();
+                entity.CreatedAt = DateTime.Now;
             }
 
-            //TODO: Set created at, created by, modified at, deleted by, etc.
+            foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Modified).Select(e => e.Entity as BaseEntity))
+            {
+                //TODO: ModifiedBy
+                entry.ModifiedAt = DateTime.Now;
+            }
+            
             return await base.SaveChangesAsync(cancellationToken);
         }
     }
