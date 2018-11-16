@@ -17,6 +17,7 @@ export class RecipeEditComponent implements OnInit {
   selectedIngredient: Ingredient;
   recipeId: string;
   editMode = false;
+  ingredientNotSelected = false;
   recipeForm: FormGroup;
 
   get recipeParts(): FormArray {
@@ -55,6 +56,11 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onAddIngredient() {
+    if (!this.selectedIngredient) {
+      this.ingredientNotSelected = true;
+      return;
+    }
+
     this.recipeParts.push(
       new FormGroup({
         id: new FormControl(null),
@@ -69,6 +75,9 @@ export class RecipeEditComponent implements OnInit {
         ])
       })
     );
+
+    this.selectedIngredient = null;
+    this.ingredientNotSelected = false;
   }
 
   onDeleteIngredient(index: number) {
