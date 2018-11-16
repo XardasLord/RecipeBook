@@ -43,6 +43,7 @@ namespace ShoppingList.Api
         {
             if (env.IsDevelopment())
             {
+                app.UpdateDatabase();
                 app.UseDeveloperExceptionPage();
             }
             else
