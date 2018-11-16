@@ -19,8 +19,8 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IRecipeService, RecipeService>();
 
             services.AddDbContext<IShoppingListDbContext, ShoppingListDbContext>(
-                opts => opts.UseSqlServer(configuration["ConnectionString:ShoppingListDB"],
-                    b => b.MigrationsAssembly("ShoppingList.Database"))
+                opts => opts.UseSqlServer(configuration.GetConnectionString("ShoppingListDB"),
+                    b => b.MigrationsAssembly(typeof(IShoppingListDbContext).Namespace))
             );
 
             return services;
