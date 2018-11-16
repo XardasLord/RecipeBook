@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddDbContext<IShoppingListDbContext, ShoppingListDbContext>(
                 opts => opts.UseSqlServer(configuration.GetConnectionString("ShoppingListDB"),
-                    b => b.MigrationsAssembly("ShoppingList.Database"))
+                    b => b.MigrationsAssembly(typeof(IShoppingListDbContext).Namespace))
             );
 
             return services;
