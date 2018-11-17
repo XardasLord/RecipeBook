@@ -40,7 +40,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <img [src]="imageUrl.value" class="img-fluid">
+          <img class="img-fluid rounded" [src]="imageUrl.value" onError="this.src='../../assets/images/no_photo.png';">
         </div>
       </div>
       <div class="row">
@@ -66,6 +66,9 @@
             (change)="onSelectIngredient($event)">
           </ng-select>
         </div>
+      </div>
+      <div class="alert alert-danger mt-3" role="alert" *ngIf="ingredientNotSelected">
+        You have to select an ingredient to add first!
       </div>
       <div class="row">
         <div class="col-12" formArrayName="recipeParts">
