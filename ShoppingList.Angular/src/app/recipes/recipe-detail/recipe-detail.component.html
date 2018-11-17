@@ -1,21 +1,25 @@
 <div class="card">
-  <img [src]="recipe.imageUrl" 
-       alt="{{ recipe.name }}" 
-       class="card-img-top img-response rounded">
+  <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" class="card-img-top img-response rounded">
 
   <div class="card-body">
     <h1 class="card-title">{{ recipe.name }}</h1>
     <p class="card-text">{{ recipe.description }}</p>
 
-    <p>
-      <button type="button" class="btn btn-primary" (click)="onAddToShoppingList()">To Shopping List</button>&nbsp;
-      <button type="button" class="btn btn-success" (click)="onRecipeEdit()">Edit Recipe</button>&nbsp;
-      <button type="button" class="btn btn-danger" (click)="onRecipeDelete()">Delete Recipe</button>
-    </p>
-    <ul class="list-group">
-      <li class="list-group-item" 
-          *ngFor="let recipePart of recipe.recipeParts">
-          {{ recipePart.ingredient.name }}: {{ recipePart.quantity }} ({{ recipePart.unit}})
+    <div class="row">
+      <div class="col-4">
+        <button type="button" class="btn btn-primary btn-block" (click)="onAddToShoppingList()">To Shopping List</button>
+      </div>
+      <div class="col-4">
+        <button type="button" class="btn btn-success btn-block" (click)="onRecipeEdit()">Edit Recipe</button>
+      </div>
+      <div class="col-4">
+        <button type="button" class="btn btn-danger btn-block" (click)="onRecipeDelete()">Delete Recipe</button>
+      </div>
+    </div>
+
+    <ul class="list-group mt-4">
+      <li class="list-group-item" *ngFor="let recipePart of recipe.recipeParts">
+        {{ recipePart.ingredient.name }}: {{ recipePart.quantity }} ({{ recipePart.unit}})
       </li>
     </ul>
   </div>
