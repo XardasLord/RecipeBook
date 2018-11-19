@@ -5,6 +5,7 @@ import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { IngredientService } from 'src/app/shared/services/ingredient.service';
+import { RecipePart } from 'src/app/shared/recipe-part.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -18,6 +19,7 @@ export class RecipeEditComponent implements OnInit {
   recipeId: string;
   editMode = false;
   ingredientNotSelected = false;
+  ingredientAlreadyAdded = false;
   recipeForm: FormGroup;
 
   get recipeParts(): FormArray {
@@ -58,9 +60,36 @@ export class RecipeEditComponent implements OnInit {
   onAddIngredient() {
     if (!this.selectedIngredient) {
       this.ingredientNotSelected = true;
+      this.ingredientAlreadyAdded = false;
       return;
     }
 
+    if (this.checkIfIngredientAlreadyAdded(this.selectedIngredient)) {
+      this.ingredientAlreadyAdded = true;
+      this.ingredientNotSelected = false;
+      return;
+    }
+
+    this.addIngredient(this.selectedIngredient);
+
+    this.selectedIngredient = null;
+    this.ingredientNotSelected = false;
+    this.ingredientAlreadyAdded = false;
+  }
+
+  private checkIfIngredientAlreadyAdded(ingredient: Ingredient): boolean {
+    let alreadyAdded = false;
+
+    this.recipeParts.value.forEach((existingRecipePart: RecipePart) => {
+      if (existingRecipePart.ingredient.id === ingredient.id) {
+        alreadyAdded = true;
+      }
+    });
+
+    return alreadyAdded;
+  }
+
+  private addIngredient(ingredientToAdd: Ingredient) {
     this.recipeParts.push(
       new FormGroup({
         id: new FormControl(null),
@@ -75,9 +104,6 @@ export class RecipeEditComponent implements OnInit {
         ])
       })
     );
-
-    this.selectedIngredient = null;
-    this.ingredientNotSelected = false;
   }
 
   onDeleteIngredient(index: number) {

@@ -67,9 +67,14 @@
           </ng-select>
         </div>
       </div>
+
       <div class="alert alert-danger mt-3" role="alert" *ngIf="ingredientNotSelected">
         You have to select an ingredient to add first!
       </div>
+      <div class="alert alert-danger mt-3" role="alert" *ngIf="ingredientAlreadyAdded">
+        This ingredient has already been added!
+      </div>
+
       <div class="row">
         <div class="col-12" formArrayName="recipeParts">
           <div class="row"

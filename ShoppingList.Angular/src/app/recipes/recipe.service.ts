@@ -5,6 +5,9 @@ import { Subject, Observable } from 'rxjs';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { environment } from 'src/environments/environment';
+
+const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -17,23 +20,23 @@ export class RecipeService {
               private http: HttpClient) { }
 
   getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`https://localhost:44373/api/recipes`);
+    return this.http.get<Recipe[]>(`${API_URL}/recipes`);
   }
 
   getRecipe(id: string): Observable<Recipe> {
-    return this.http.get<Recipe>(`https://localhost:44373/api/recipes/${id}`);
+    return this.http.get<Recipe>(`${API_URL}/recipes/${id}`);
   }
 
   addRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.post<Recipe>(`https://localhost:44373/api/recipes`, recipe);
+    return this.http.post<Recipe>(`${API_URL}/recipes`, recipe);
   }
 
   updateRecipe(newRecipe: Recipe): Observable<Recipe> {
-    return this.http.put<Recipe>(`https://localhost:44373/api/recipes`, newRecipe);
+    return this.http.put<Recipe>(`${API_URL}/recipes`, newRecipe);
   }
 
   deleteRecipe(id: string) {
-    return this.http.delete(`https://localhost:44373/api/recipes/${id}`);
+    return this.http.delete(`${API_URL}/recipes/${id}`);
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]): void {

@@ -24,7 +24,7 @@ The project requirements are growing all the time and new features are adding on
 
 ## Technology used
 
-* Angular 6
+* Angular 7
 * .NET Core 2.1
 * Entity Framework Core
 * SQL Server
