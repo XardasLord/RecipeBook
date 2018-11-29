@@ -24,6 +24,7 @@ namespace ShoppingList.Business.Implementation.Queries
         {
             var ingredients = await _shoppingListDbContext.Ingredients
                 .Where(x => !x.IsDeleted)
+                .OrderBy(x => x.Name)
                 .ToListAsync();
 
             return _mapper.Map<IEnumerable<IngredientModel>>(ingredients);
