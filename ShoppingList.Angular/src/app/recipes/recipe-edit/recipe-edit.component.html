@@ -1,138 +1,139 @@
-<div class="row">
-  <div class="col-12">
-    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-12">
-          <button 
-            type="submit" 
-            class="btn btn-success"
-            [disabled]="!recipeForm.valid">Save</button>&nbsp;
-          <button 
-            type="button" 
-            class="btn btn-danger"
-            (click)="onCancel()">Cancel</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="form-group">
-            <label name="name">Name</label>
-            <input 
-              type="text" 
-              id="name"
-              class="form-control"
-              formControlName="name">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="form-group">
-            <label name="imageUrl">Image URL</label>
-            <input 
-              type="text" 
-              id="imageUrl"
-              class="form-control"
-              formControlName="imageUrl"
-              #imageUrl>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <img class="img-fluid rounded" [src]="imageUrl.value" onError="this.src='../../assets/images/no_photo.png';">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="form-group">
-            <label name="description">Description</label>
-            <textarea 
-              type="text" 
-              id="description"
-              class="form-control"
-              rows="6"
-              formControlName="description">
-            </textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <ng-select 
-            [items]="ingredients"
-            bindLabel="name"
-            bindValue="id"
-            (change)="onSelectIngredient($event)">
-          </ng-select>
-        </div>
-      </div>
-
-      <div class="alert alert-danger mt-3" role="alert" *ngIf="ingredientNotSelected">
-        You have to select an ingredient to add first!
-      </div>
-      <div class="alert alert-danger mt-3" role="alert" *ngIf="ingredientAlreadyAdded">
-        This ingredient has already been added!
-      </div>
-
-      <div class="row">
-        <div class="col-12" formArrayName="recipeParts">
-          <div class="row"
-               *ngFor="let ingredientControl of recipeForm.get('recipeParts').controls; let i=index"
-               [formGroupName]="i"
-               style="margin-top: 10px;">
-            <div class="col-8">
+<div class="card">
+  <div class="row p-3">
+    <div class="col-12">
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label name="name">Name</label>
               <input 
-                type="hidden"
-                formControlName="id">
+                type="text" 
+                id="name"
+                class="form-control"
+                formControlName="name">
             </div>
-            <div formGroupName="ingredient">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label name="imageUrl">Image URL</label>
               <input 
-                type="hidden"
-                formControlName="id">
-              <div class="col-12">
+                type="text" 
+                id="imageUrl"
+                class="form-control"
+                formControlName="imageUrl"
+                #imageUrl>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <img class="img-fluid rounded" [src]="imageUrl.value" onError="this.src='../../assets/images/no_photo.png';">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label name="description">Description</label>
+              <textarea 
+                type="text" 
+                id="description"
+                class="form-control"
+                rows="6"
+                formControlName="description">
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ng-select 
+              [items]="ingredients"
+              bindLabel="name"
+              bindValue="id"
+              (change)="onSelectIngredient($event)">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="alert alert-danger mt-3" role="alert" *ngIf="ingredientNotSelected">
+          You have to select an ingredient to add first!
+        </div>
+        <div class="alert alert-danger mt-3" role="alert" *ngIf="ingredientAlreadyAdded">
+          This ingredient has already been added!
+        </div>
+
+        <div class="row">
+          <div class="col-12" formArrayName="recipeParts">
+            <div class="row"
+                *ngFor="let ingredientControl of recipeForm.get('recipeParts').controls; let i=index"
+                [formGroupName]="i"
+                style="margin-top: 10px;">
+              <div class="col-8">
+                <input 
+                  type="hidden"
+                  formControlName="id">
+              </div>
+              <div formGroupName="ingredient">
+                <input 
+                  type="hidden"
+                  formControlName="id">
+                <div class="col-12">
+                  <input 
+                    type="text"
+                    class="form-control"
+                    formControlName="name">
+                </div>
+              </div>
+              <div class="col-2">
+                <input 
+                  type="number"
+                  class="form-control"
+                  formControlName="quantity">
+              </div>
+              <div class="col-2">
                 <input 
                   type="text"
                   class="form-control"
-                  formControlName="name">
+                  formControlName="unit">
+              </div>
+              <div class="col-2">
+                <button 
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="onDeleteIngredient(i)">X</button>
               </div>
             </div>
-            <div class="col-2">
-              <input 
-                type="number"
-                class="form-control"
-                formControlName="quantity">
-            </div>
-            <div class="col-2">
-              <input 
-                type="text"
-                class="form-control"
-                formControlName="unit">
-            </div>
-            <div class="col-2">
-              <button 
-                type="button"
-                class="btn btn-danger"
-                (click)="onDeleteIngredient(i)">X</button>
+            <div class="form-group">
             </div>
           </div>
-          <div class="form-group">
+          <hr>
+          <div class="row pl-3">
+            <div class="col-12">
+              <button class="btn btn-success"
+                      type="button"
+                      (click)="onAddIngredient()">Add Ingredient</button>
+            </div>
           </div>
         </div>
-        <hr>
-        <div class="row">
+        <input type="hidden" 
+               id="id"
+               class="form-control"
+               formControlName="id">
+        <div class="row mt-3">
           <div class="col-12">
-            <button class="btn btn-success"
-                    type="button"
-                    (click)="onAddIngredient()">Add Ingredient</button>
+            <button 
+              type="submit" 
+              class="btn btn-success"
+              [disabled]="!recipeForm.valid">Save</button>&nbsp;
+            <button 
+              type="button" 
+              class="btn btn-danger"
+              (click)="onCancel()">Cancel</button>
           </div>
         </div>
-      </div>
-      <input 
-        type="hidden" 
-        id="id"
-        class="form-control"
-        formControlName="id">
-    </form>
+      </form>
+    </div>
   </div>
 </div>
