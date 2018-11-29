@@ -3,7 +3,8 @@ a {
 }
 
 a.active {
-  background-color: lightgray !important;
+  /* background-color: lightgray !important;  */
+  background-image: linear-gradient(#c8c8c8,  #fafafa);
   color: #000;
   border-color: gray;
 }
