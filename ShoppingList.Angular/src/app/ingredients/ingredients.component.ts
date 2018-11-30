@@ -20,6 +20,12 @@ export class IngredientsComponent implements OnInit {
 
     this.ingredientService.ingredientsChanged.subscribe(newIngredient => {
       this.ingredients.push(newIngredient);
+
+      this.sortIngredientsByName();
     });
+  }
+
+  private sortIngredientsByName() {
+    this.ingredients.sort((a, b) => a.name.localeCompare(b.name));
   }
 }
