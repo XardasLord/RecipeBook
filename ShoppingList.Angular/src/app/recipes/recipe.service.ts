@@ -5,7 +5,7 @@ import { Subject, Observable } from 'rxjs';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 const API_URL = environment.apiUrl;
 

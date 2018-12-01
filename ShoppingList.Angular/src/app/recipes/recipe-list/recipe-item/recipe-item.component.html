@@ -1,5 +1,5 @@
 <a style="cursor: pointer;"
-   class="list-group-item clearfix"
+   class="list-group-item clearfix shadow-sm mb-3"
    [routerLink]="recipe.id"
    routerLinkActive="active">
   <div class="float-left">
@@ -7,6 +7,6 @@
     <p class="list-group-item-text">{{ recipe.description }}</p>
   </div>
   <span class="float-right">
-    <img [src]="recipe.imageUrl" alt="" class="img-fluid" style="max-height: 50px;">
+    <img [src]="recipe.imageUrl" alt="" class="img-fluid" style="max-height: 75px;">
   </span>
 </a>
