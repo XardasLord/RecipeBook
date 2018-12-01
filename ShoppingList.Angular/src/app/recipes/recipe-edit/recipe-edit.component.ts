@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 import { IngredientService } from '../../shared/services/ingredient.service';
 import { RecipeService } from '../recipe.service';
@@ -30,7 +31,8 @@ export class RecipeEditComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private recipeService: RecipeService,
-              private ingredientService: IngredientService) { }
+              private ingredientService: IngredientService,
+              private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -52,6 +54,7 @@ export class RecipeEditComponent implements OnInit {
     } else {
       this.recipeService.addRecipe(this.recipeForm.value).subscribe(createdRecipe => {
         this.recipeService.recipesChanged.next(createdRecipe);
+        this.toastrService.success(`${createdRecipe.name} recipe has been added!`, `New recipe`);
       });
     }
 

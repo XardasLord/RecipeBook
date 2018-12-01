@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { Ingredient } from '../shared/ingredient.model';
 import { IngredientService } from '../shared/services/ingredient.service';
@@ -11,7 +12,8 @@ import { IngredientService } from '../shared/services/ingredient.service';
 export class IngredientsComponent implements OnInit {
   ingredients: Ingredient[] = [];
 
-  constructor(private ingredientService: IngredientService) { }
+  constructor(private ingredientService: IngredientService,
+              private toasrtService: ToastrService) { }
 
   ngOnInit() {
     this.ingredientService.getAll().subscribe(ingredients => {
@@ -22,10 +24,15 @@ export class IngredientsComponent implements OnInit {
       this.ingredients.push(newIngredient);
 
       this.sortIngredientsByName();
+      this.showSuccess(newIngredient);
     });
   }
 
   private sortIngredientsByName() {
     this.ingredients.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  private showSuccess(ingredient: Ingredient) {
+    this.toasrtService.success(`${ingredient.name} has been added!`, 'New ingredient');
   }
 }
