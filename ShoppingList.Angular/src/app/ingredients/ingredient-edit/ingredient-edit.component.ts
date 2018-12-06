@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { IngredientService } from '../../shared/services/ingredient.service';
 import { Ingredient } from '../../shared/ingredient.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ingredient-edit',
@@ -12,7 +13,9 @@ import { Ingredient } from '../../shared/ingredient.model';
 export class IngredientEditComponent implements OnInit {
   ingredientForm: FormGroup;
 
-  constructor(private ingredientService: IngredientService) { }
+  constructor(
+    private ingredientService: IngredientService,
+    private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.initForm();
@@ -32,6 +35,8 @@ export class IngredientEditComponent implements OnInit {
       // ...
       this.ingredientService.ingredientsChanged.next(newIngredient);
       this.ingredientForm.reset();
+
+      this.toastrService.success(`${newIngredient.name} ingredient has been added!`, `New ingredient`);
     });
   }
 }
