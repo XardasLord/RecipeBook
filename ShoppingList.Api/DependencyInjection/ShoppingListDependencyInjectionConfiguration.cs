@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ShoppingList.Business;
+using ShoppingList.Business.Helpers;
+using ShoppingList.Business.Implementation.Helpers;
 using ShoppingList.Business.Implementation.Queries;
 using ShoppingList.Business.Implementation.Services;
 using ShoppingList.Business.Queries;
@@ -15,6 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddTransient<IIngredientQuery, IngredientQuery>();
             services.AddTransient<IIngredientService, IngredientService>();
+            services.AddTransient<IIngredientHelper, IngredientHelper>();
             services.AddTransient<IRecipeQuery, RecipeQuery>();
             services.AddTransient<IRecipeService, RecipeService>();
 
