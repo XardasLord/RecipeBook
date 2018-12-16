@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ShoppingList.Infrastructure.Implementation.ErrorHandling;
 
 namespace ShoppingList.Api
 {
@@ -51,6 +52,7 @@ namespace ShoppingList.Api
                 app.UseHsts();
             }
 
+            app.ConfigureCustomExceptionMiddleware();
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
             app.UseMvc();
