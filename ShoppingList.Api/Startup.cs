@@ -55,6 +55,7 @@ namespace ShoppingList.Api
             }
 
             app.ConfigureCustomExceptionMiddleware();
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
             app.UseMvc();
