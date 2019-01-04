@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { User } from '../user.model';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../user.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  user = new User();
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -19,18 +19,10 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSignUp(form: NgForm) {
-    if (form.invalid) {
-      return;
-    }
-
-    const user = new User();
-    user.email = form.value.email;
-    user.password = form.value.password;
-
-    this.authService.register(user).subscribe(() => {
+  onSignUp() {
+    this.authService.register(this.user).subscribe(() => {
       this.router.navigate(['/']);
-      this.toastrService.success(`User with email: ${user.email} has been registered! Please log in.`, `New user`);
+      this.toastrService.success(`User with email: ${this.user.email} has been registered! Please log in.`, `New user`);
     });
   }
 
