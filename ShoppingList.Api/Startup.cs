@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ShoppingList.Api.Extensions;
 using ShoppingList.Infrastructure.Implementation.ErrorHandling;
 
 namespace ShoppingList.Api
@@ -21,6 +22,7 @@ namespace ShoppingList.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureApplicationDependencies(Configuration);
+            services.ConfigureApplicationJwtAuthorization();
 
             services.AddAutoMapper();
 
