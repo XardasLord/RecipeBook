@@ -15,6 +15,7 @@ namespace ShoppingList.Api.Controllers
             _authenticateService = authenticateService;
         }
 
+        // POST: api/Authenticate
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] UserModel user)
         {
