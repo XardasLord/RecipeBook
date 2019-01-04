@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { User } from './user.model';
+import { Observable } from 'rxjs';
 
 const API_URL = environment.apiUrl;
 
@@ -9,9 +11,9 @@ const API_URL = environment.apiUrl;
 })
 export class AuthService {
 
-  constructor(http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  register(email: string, password: string) {
-    // TODO: Here will be created call to the API to register the user
+  register(user: User): Observable<void> {
+    return this.http.post<void>(`${API_URL}/authentication`, user);
   }
 }
