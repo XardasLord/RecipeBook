@@ -9,7 +9,7 @@ namespace ShoppingList.Api.Extensions
     {
         public static IServiceCollection ConfigureApplicationJwtAuthorization(this IServiceCollection services)
         {
-            var secretKey = "cV0JzOy,O;Hi*=GlARx|DVW/;8SM/k";
+            var secretKey = "cV0JzOy,O;Hi*=GlARx|DVW/;8SM/k"; //TODO: Move as an environment value
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

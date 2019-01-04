@@ -22,6 +22,7 @@ namespace ShoppingList.Api.Extensions
             services.AddTransient<IRecipeQuery, RecipeQuery>();
             services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<IAuthenticateService, AuthenticateService>();
+            services.AddTransient<IAuthenticateHelper, AuthenticateHelper>();
 
             services.AddDbContext<IShoppingListDbContext, ShoppingListDbContext>(
                 opts => opts.UseSqlServer(configuration.GetConnectionString("ShoppingListDB"),

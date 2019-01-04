@@ -15,14 +15,37 @@ namespace ShoppingList.Api.Controllers
             _authenticateService = authenticateService;
         }
 
-        // POST: api/Authenticate
+        // POST: api/Authenticate/register
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserModel user)
         {
-            var createdId = await _authenticateService.Register(user);
+            if (user == null)
+            {
+                return BadRequest("Invalid client request");
+            }
+
+            var createdId = await _authenticateService.RegisterAsync(user);
             user.Id = createdId;
 
             return Ok(); // Created (201) ?
+        }
+
+        // POST: api/Authenticate/login
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserModel user)
+        {
+            if (user == null)
+            {
+                return BadRequest("Invalid client request");
+            }
+
+            var token = await _authenticateService.LoginAsync(user);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+
+            return Ok(token);
         }
     }
 }

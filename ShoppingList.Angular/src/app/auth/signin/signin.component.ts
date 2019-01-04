@@ -19,8 +19,10 @@ export class SigninComponent implements OnInit {
 
   onSignIn() {
     this.authService.logIn(this.user).subscribe(token => {
-      // TODO: Store the jwt token
+      localStorage.setItem('jwt', token);
       this.router.navigate(['/']);
+    }, err => {
+      // TODO: Message on error?
     });
   }
 

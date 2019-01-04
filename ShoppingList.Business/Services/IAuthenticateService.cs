@@ -6,6 +6,7 @@ namespace ShoppingList.Business.Services
 {
     public interface IAuthenticateService
     {
-        Task<Guid> Register(UserModel model);
+        Task<Guid> RegisterAsync(UserModel model);
+        Task<string> LoginAsync(UserModel model);
     }
 }
