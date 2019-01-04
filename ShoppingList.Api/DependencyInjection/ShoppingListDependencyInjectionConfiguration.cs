@@ -20,6 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IIngredientHelper, IngredientHelper>();
             services.AddTransient<IRecipeQuery, RecipeQuery>();
             services.AddTransient<IRecipeService, RecipeService>();
+            services.AddTransient<IAuthenticateService, AuthenticateService>();
 
             services.AddDbContext<IShoppingListDbContext, ShoppingListDbContext>(
                 opts => opts.UseSqlServer(configuration.GetConnectionString("ShoppingListDB"),
