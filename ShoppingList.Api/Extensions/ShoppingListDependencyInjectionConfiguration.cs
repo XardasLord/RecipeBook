@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using ShoppingList.Business;
 using ShoppingList.Business.Helpers;
 using ShoppingList.Business.Implementation.Helpers;
@@ -9,7 +10,7 @@ using ShoppingList.Business.Queries;
 using ShoppingList.Business.Services;
 using ShoppingList.Database;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace ShoppingList.Api.Extensions
 {
     public static class ShoppingListDependencyInjectionConfiguration
     {
@@ -20,6 +21,8 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IIngredientHelper, IngredientHelper>();
             services.AddTransient<IRecipeQuery, RecipeQuery>();
             services.AddTransient<IRecipeService, RecipeService>();
+            services.AddTransient<IAuthenticateService, AuthenticateService>();
+            services.AddTransient<IAuthenticateHelper, AuthenticateHelper>();
 
             services.AddDbContext<IShoppingListDbContext, ShoppingListDbContext>(
                 opts => opts.UseSqlServer(configuration.GetConnectionString("ShoppingListDB"),
