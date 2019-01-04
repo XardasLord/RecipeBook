@@ -16,7 +16,7 @@ namespace ShoppingList.Api.Controllers
         }
 
         // POST: api/Authenticate
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserModel user)
         {
             var createdId = await _authenticateService.Register(user);
