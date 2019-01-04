@@ -21,6 +21,7 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { IngredientEditComponent } from './ingredients/ingredient-edit/ingredient-edit.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { IngredientEditComponent } from './ingredients/ingredient-edit/ingredien
     RecipeStartComponent,
     RecipeEditComponent,
     IngredientsComponent,
-    IngredientEditComponent
+    IngredientEditComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
