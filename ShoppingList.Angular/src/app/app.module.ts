@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -25,6 +25,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { IngredientEditComponent } from './ingredients/ingredient-edit/ingredient-edit.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { HttpErrorInterceptor } from './http-error.interceptor';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -65,7 +66,14 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ShoppingListService, AuthGuard],
+  providers: [
+    ShoppingListService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
