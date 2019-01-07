@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShoppingList.Database;
 
-namespace ShoppingList.Api
+namespace ShoppingList.Api.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
