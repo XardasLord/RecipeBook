@@ -45,7 +45,7 @@ namespace ShoppingList.Api.Controllers
                 return Unauthorized();
             }
 
-            return Ok(token);
+            return Ok(new { Token = token });
         }
     }
 }

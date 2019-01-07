@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../user.model';
 import { AuthService } from '../auth.service';
 
@@ -10,6 +11,7 @@ import { AuthService } from '../auth.service';
 })
 export class SigninComponent implements OnInit {
   user = new User();
+  invalidLogin = false;
 
   constructor(private authService: AuthService,
               private router: Router) { }
@@ -18,11 +20,15 @@ export class SigninComponent implements OnInit {
   }
 
   onSignIn() {
-    this.authService.logIn(this.user).subscribe(token => {
-      localStorage.setItem('jwt', token);
+    this.authService.logIn(this.user).subscribe(jwt => {
+      this.invalidLogin = false;
+      localStorage.setItem('jwt', jwt.token);
+
+      this.authService.onUserLoggedIn.next(this.user);
       this.router.navigate(['/']);
-    }, err => {
-      // TODO: Message on error?
+    },
+      (err: HttpErrorResponse) => {
+      this.invalidLogin = true;
     });
   }
 
