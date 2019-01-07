@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Queries;
@@ -35,6 +36,7 @@ namespace ShoppingList.Api.Controllers
 
         // POST: api/Recipes
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Add([FromBody] RecipeModel model)
         {
             var createdId = await _recipeService.AddAsync(model);
@@ -46,6 +48,7 @@ namespace ShoppingList.Api.Controllers
         //TODO: Add ID parameter getting from route
         // PUT: api/Recipes
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Update([FromBody] RecipeModel model)
         {
             await _recipeService.UpdateAsync(model);
@@ -55,6 +58,7 @@ namespace ShoppingList.Api.Controllers
 
         // DELETE: api/Recipes/00000000-0000-0000-0000-000000000000
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _recipeService.DeleteAsync(id);
