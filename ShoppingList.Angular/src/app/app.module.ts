@@ -8,6 +8,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
+import { AuthGuard } from './auth/guards/auth-guard.service';
 import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
@@ -24,7 +25,6 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { IngredientEditComponent } from './ingredients/ingredient-edit/ingredient-edit.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { AuthGuard } from './auth/guards/auth-guard.service';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -60,7 +60,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['example.com'],
+        whitelistedDomains: ['localhost:44373'], // TODO: this is for development only
         blacklistedRoutes: ['example.com/examplebadroute/']
       }
     })
