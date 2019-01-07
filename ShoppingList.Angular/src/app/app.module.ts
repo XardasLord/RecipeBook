@@ -24,6 +24,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { IngredientEditComponent } from './ingredients/ingredient-edit/ingredient-edit.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { AuthGuard } from './auth/guards/auth-guard.service';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -64,7 +65,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
