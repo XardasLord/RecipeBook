@@ -17,7 +17,7 @@ export class AuthService {
     return this.http.post<void>(`${API_URL}/authentication/register`, user);
   }
 
-  logIn(user: User): Observable<string> {
-    return this.http.post<string>(`${API_URL}/authentication/login`, user);
+  logIn(user: User): Observable<any> {
+    return this.http.post<any>(`${API_URL}/authentication/login`, user);
   }
 }
