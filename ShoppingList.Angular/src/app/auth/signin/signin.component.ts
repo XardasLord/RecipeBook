@@ -23,6 +23,8 @@ export class SigninComponent implements OnInit {
     this.authService.logIn(this.user).subscribe(jwt => {
       this.invalidLogin = false;
       localStorage.setItem('jwt', jwt.token);
+
+      this.authService.onUserLoggedIn.next(this.user);
       this.router.navigate(['/']);
     },
       (err: HttpErrorResponse) => {
