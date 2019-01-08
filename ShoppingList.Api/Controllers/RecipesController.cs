@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingList.Business.Implementation.Recipes.Commands.CreateRecipe;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetAllRecipes;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetRecipe;
 using ShoppingList.Business.Models;
@@ -29,26 +30,25 @@ namespace ShoppingList.Api.Controllers
             return Ok(await _mediator.Send(new GetAllRecipesQuery()));
         }
 
-        // GET: api/Recipes/00000000-0000-0000-0000-000000000000
+        // GET: api/recipes/guid
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await _mediator.Send(new GetRecipeQuery { Id = id }));
         }
 
-        // POST: api/Recipes
+        // POST: api/recipes
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Add([FromBody] RecipeModel model)
+        public async Task<IActionResult> Add([FromBody] CreateRecipeCommand command)
         {
-            var createdId = await _recipeService.AddAsync(model);
-            model.Id = createdId;
+            var recipeId = await _mediator.Send(command);
 
-            return CreatedAtAction("Get", new { id = createdId }, model);
+            return Ok(recipeId);
         }
 
         //TODO: Add ID parameter getting from route
-        // PUT: api/Recipes
+        // PUT: api/recipes
         [HttpPut]
         [Authorize]
         public async Task<IActionResult> Update([FromBody] RecipeModel model)
@@ -58,7 +58,7 @@ namespace ShoppingList.Api.Controllers
             return CreatedAtAction("Get", new { id = model.Id }, model);
         }
 
-        // DELETE: api/Recipes/00000000-0000-0000-0000-000000000000
+        // DELETE: api/recipes/guid
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> Delete(Guid id)

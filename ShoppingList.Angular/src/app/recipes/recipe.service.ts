@@ -27,8 +27,8 @@ export class RecipeService {
     return this.http.get<Recipe>(`${API_URL}/recipes/${id}`);
   }
 
-  addRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.post<Recipe>(`${API_URL}/recipes`, recipe);
+  addRecipe(recipe: Recipe): Observable<string> {
+    return this.http.post<string>(`${API_URL}/recipes`, recipe);
   }
 
   updateRecipe(newRecipe: Recipe): Observable<Recipe> {
