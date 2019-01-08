@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetAllRecipes;
+using ShoppingList.Business.Implementation.Recipes.Queries.GetRecipe;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Queries;
 using ShoppingList.Business.Services;
@@ -35,7 +36,7 @@ namespace ShoppingList.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            return Ok(await _recipeQuery.GetAsync(id));
+            return Ok(await _mediator.Send(new GetRecipeQuery { Id = id }));
         }
 
         // POST: api/Recipes
