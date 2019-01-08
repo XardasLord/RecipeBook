@@ -6,7 +6,6 @@ using ShoppingList.Business.Helpers;
 using ShoppingList.Business.Implementation.Helpers;
 using ShoppingList.Business.Implementation.Queries;
 using ShoppingList.Business.Implementation.Services;
-using ShoppingList.Business.Queries;
 using ShoppingList.Business.Services;
 using ShoppingList.Database;
 
@@ -19,7 +18,6 @@ namespace ShoppingList.Api.Extensions
             services.AddTransient<IIngredientQuery, IngredientQuery>();
             services.AddTransient<IIngredientService, IngredientService>();
             services.AddTransient<IIngredientHelper, IngredientHelper>();
-            services.AddTransient<IRecipeQuery, RecipeQuery>();
             services.AddTransient<IRecipeService, RecipeService>();
             services.AddTransient<IAuthenticateService, AuthenticateService>();
             services.AddTransient<IAuthenticateHelper, AuthenticateHelper>();

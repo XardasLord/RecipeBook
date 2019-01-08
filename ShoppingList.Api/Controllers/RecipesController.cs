@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetAllRecipes;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetRecipe;
 using ShoppingList.Business.Models;
-using ShoppingList.Business.Queries;
 using ShoppingList.Business.Services;
 
 namespace ShoppingList.Api.Controllers
@@ -14,13 +13,11 @@ namespace ShoppingList.Api.Controllers
     [Route("api/[controller]")]
     public class RecipesController : ControllerBase
     {
-        private readonly IRecipeQuery _recipeQuery;
         private readonly IRecipeService _recipeService;
         private readonly IMediator _mediator;
 
-        public RecipesController(IRecipeQuery recipeQuery, IRecipeService recipeService, IMediator mediator)
+        public RecipesController(IRecipeService recipeService, IMediator mediator)
         {
-            _recipeQuery = recipeQuery;
             _recipeService = recipeService;
             _mediator = mediator;
         }
