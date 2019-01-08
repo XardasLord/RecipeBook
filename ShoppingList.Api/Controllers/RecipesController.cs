@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingList.Business.Implementation.Recipes.Queries.GetAllRecipes;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Queries;
 using ShoppingList.Business.Services;
@@ -13,18 +15,20 @@ namespace ShoppingList.Api.Controllers
     {
         private readonly IRecipeQuery _recipeQuery;
         private readonly IRecipeService _recipeService;
+        private readonly IMediator _mediator;
 
-        public RecipesController(IRecipeQuery recipeQuery, IRecipeService recipeService)
+        public RecipesController(IRecipeQuery recipeQuery, IRecipeService recipeService, IMediator mediator)
         {
             _recipeQuery = recipeQuery;
             _recipeService = recipeService;
+            _mediator = mediator;
         }
 
-        // GET: api/Recipes
+        // GET: api/recipes
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _recipeQuery.GetAllAsync());
+            return Ok(await _mediator.Send(new GetAllRecipesQuery()));
         }
 
         // GET: api/Recipes/00000000-0000-0000-0000-000000000000
