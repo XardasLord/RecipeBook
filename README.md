@@ -19,15 +19,17 @@ The project requirements are growing all the time and new features are adding on
 * **ShoppingList.Api** - this is the general API project. It has 2 subprojects:
   - **Api** - main .NET Core API. It contains controllers with endpoints to communicate with the frontend. This project also contains mappings from entity classes to the domain model classes which are send to the user.
   - **Tests** - contains tests for the API endpoints.
-* **ShoppingList.Angular** - the frontend application built with Angular.
+* **ShoppingList.Angular** - the frontend application built with Angular 7 and Bootstrap v4.2.1.
 
 
 ## Technology used
 
 * Angular 7
-* .NET Core 2.1
-* Entity Framework Core
+* .NET Core 2.2
+* Entity Framework Core 2.1
 * SQL Server
 * Automapper
+* NLog
+* JWT for authorization
 * ...
 * will be updated regularly... :)
