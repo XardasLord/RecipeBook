@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ShoppingList.Business.Implementation.Recipes.Commands.CreateRecipe;
+using ShoppingList.Business.Implementation.Recipes.Commands.UpdateRecipe;
 using ShoppingList.Business.Models;
 using ShoppingList.Entities;
 
@@ -15,6 +16,7 @@ namespace ShoppingList.Api.Mappings
             CreateMap<User, UserModel>().ReverseMap();
 
             CreateMap<CreateRecipeCommand, Recipe>();
+            CreateMap<UpdateRecipeCommand, Recipe>();
         }
     }
 }

@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business.Implementation.Recipes.Commands.CreateRecipe;
+using ShoppingList.Business.Implementation.Recipes.Commands.UpdateRecipe;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetAllRecipes;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetRecipe;
 using ShoppingList.Business.Models;
@@ -51,11 +52,9 @@ namespace ShoppingList.Api.Controllers
         // PUT: api/recipes
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> Update([FromBody] RecipeModel model)
+        public async Task<IActionResult> Update([FromBody] UpdateRecipeCommand command)
         {
-            await _recipeService.UpdateAsync(model);
-
-            return CreatedAtAction("Get", new { id = model.Id }, model);
+            return Ok(await _mediator.Send(command));
         }
 
         // DELETE: api/recipes/guid
