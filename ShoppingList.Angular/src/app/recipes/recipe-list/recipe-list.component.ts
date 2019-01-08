@@ -26,6 +26,11 @@ export class RecipeListComponent implements OnInit {
       this.recipes[index] = updatedRecipe;
     });
 
+    this.recipeService.recipeDeleted.subscribe(deletedId => {
+      const index = this.recipes.findIndex(x => x.id === deletedId);
+      this.recipes.splice(index, 1);
+    });
+
     this.recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
     });

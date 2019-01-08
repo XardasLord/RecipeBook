@@ -15,6 +15,7 @@ const API_URL = environment.apiUrl;
 export class RecipeService {
   recipesChanged = new Subject<Recipe>();
   recipeUpdated = new Subject<Recipe>();
+  recipeDeleted = new Subject<string>();
 
   constructor(private shoppingListService: ShoppingListService,
               private http: HttpClient) { }
@@ -27,12 +28,12 @@ export class RecipeService {
     return this.http.get<Recipe>(`${API_URL}/recipes/${id}`);
   }
 
-  addRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.post<Recipe>(`${API_URL}/recipes`, recipe);
+  addRecipe(recipe: Recipe): Observable<string> {
+    return this.http.post<string>(`${API_URL}/recipes`, recipe);
   }
 
   updateRecipe(newRecipe: Recipe): Observable<Recipe> {
-    return this.http.put<Recipe>(`${API_URL}/recipes`, newRecipe);
+    return this.http.put<Recipe>(`${API_URL}/recipes/${newRecipe.id}`, newRecipe);
   }
 
   deleteRecipe(id: string) {

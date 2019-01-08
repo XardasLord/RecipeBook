@@ -1,67 +1,59 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ShoppingList.Business.Models;
-using ShoppingList.Business.Queries;
-using ShoppingList.Business.Services;
+using ShoppingList.Business.Implementation.Recipes.Commands.CreateRecipe;
+using ShoppingList.Business.Implementation.Recipes.Commands.DeleteRecipe;
+using ShoppingList.Business.Implementation.Recipes.Commands.UpdateRecipe;
+using ShoppingList.Business.Implementation.Recipes.Queries.GetAllRecipes;
+using ShoppingList.Business.Implementation.Recipes.Queries.GetRecipe;
 
 namespace ShoppingList.Api.Controllers
 {
     [Route("api/[controller]")]
     public class RecipesController : ControllerBase
     {
-        private readonly IRecipeQuery _recipeQuery;
-        private readonly IRecipeService _recipeService;
+        private readonly IMediator _mediator;
 
-        public RecipesController(IRecipeQuery recipeQuery, IRecipeService recipeService)
+        public RecipesController(IMediator mediator)
         {
-            _recipeQuery = recipeQuery;
-            _recipeService = recipeService;
+            _mediator = mediator;
         }
-
-        // GET: api/Recipes
+        
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _recipeQuery.GetAllAsync());
+            return Ok(await _mediator.Send(new GetAllRecipesQuery()));
         }
-
-        // GET: api/Recipes/00000000-0000-0000-0000-000000000000
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            return Ok(await _recipeQuery.GetAsync(id));
+            return Ok(await _mediator.Send(new GetRecipeQuery { Id = id }));
         }
-
-        // POST: api/Recipes
+        
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Add([FromBody] RecipeModel model)
+        public async Task<IActionResult> Create([FromBody] CreateRecipeCommand command)
         {
-            var createdId = await _recipeService.AddAsync(model);
-            model.Id = createdId;
+            var recipeId = await _mediator.Send(command);
 
-            return CreatedAtAction("Get", new { id = createdId }, model);
+            return Ok(recipeId);
         }
-
-        //TODO: Add ID parameter getting from route
-        // PUT: api/Recipes
-        [HttpPut]
+        
+        [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> Update([FromBody] RecipeModel model)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRecipeCommand command)
         {
-            await _recipeService.UpdateAsync(model);
-
-            return CreatedAtAction("Get", new { id = model.Id }, model);
+            return Ok(await _mediator.Send(command));
         }
-
-        // DELETE: api/Recipes/00000000-0000-0000-0000-000000000000
+        
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await _recipeService.DeleteAsync(id);
+            await _mediator.Send(new DeleteRecipeCommand { Id = id });
 
             return NoContent();
         }
