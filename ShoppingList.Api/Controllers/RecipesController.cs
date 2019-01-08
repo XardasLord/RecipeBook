@@ -20,41 +20,35 @@ namespace ShoppingList.Api.Controllers
         {
             _mediator = mediator;
         }
-
-        // GET: api/recipes
+        
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _mediator.Send(new GetAllRecipesQuery()));
         }
-
-        // GET: api/recipes/guid
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await _mediator.Send(new GetRecipeQuery { Id = id }));
         }
-
-        // POST: api/recipes
+        
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Add([FromBody] CreateRecipeCommand command)
+        public async Task<IActionResult> Create([FromBody] CreateRecipeCommand command)
         {
             var recipeId = await _mediator.Send(command);
 
             return Ok(recipeId);
         }
-
-        //TODO: Add ID parameter getting from route
-        // PUT: api/recipes
-        [HttpPut]
+        
+        [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> Update([FromBody] UpdateRecipeCommand command)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRecipeCommand command)
         {
             return Ok(await _mediator.Send(command));
         }
-
-        // DELETE: api/recipes/guid
+        
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> Delete(Guid id)

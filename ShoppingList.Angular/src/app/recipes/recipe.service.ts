@@ -33,7 +33,7 @@ export class RecipeService {
   }
 
   updateRecipe(newRecipe: Recipe): Observable<Recipe> {
-    return this.http.put<Recipe>(`${API_URL}/recipes`, newRecipe);
+    return this.http.put<Recipe>(`${API_URL}/recipes/${newRecipe.id}`, newRecipe);
   }
 
   deleteRecipe(id: string) {
