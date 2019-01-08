@@ -15,6 +15,7 @@ const API_URL = environment.apiUrl;
 export class RecipeService {
   recipesChanged = new Subject<Recipe>();
   recipeUpdated = new Subject<Recipe>();
+  recipeDeleted = new Subject<string>();
 
   constructor(private shoppingListService: ShoppingListService,
               private http: HttpClient) { }

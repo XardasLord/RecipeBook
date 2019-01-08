@@ -4,10 +4,10 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business.Implementation.Recipes.Commands.CreateRecipe;
+using ShoppingList.Business.Implementation.Recipes.Commands.DeleteRecipe;
 using ShoppingList.Business.Implementation.Recipes.Commands.UpdateRecipe;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetAllRecipes;
 using ShoppingList.Business.Implementation.Recipes.Queries.GetRecipe;
-using ShoppingList.Business.Models;
 using ShoppingList.Business.Services;
 
 namespace ShoppingList.Api.Controllers
@@ -62,7 +62,7 @@ namespace ShoppingList.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await _recipeService.DeleteAsync(id);
+            await _mediator.Send(new DeleteRecipeCommand { Id = id });
 
             return NoContent();
         }

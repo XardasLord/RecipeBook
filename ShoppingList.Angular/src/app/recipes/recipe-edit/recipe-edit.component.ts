@@ -49,7 +49,6 @@ export class RecipeEditComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.recipeForm.value).subscribe(updatedRecipe => {
-        console.log(updatedRecipe);
         this.recipeService.recipeUpdated.next(updatedRecipe);
       });
     } else {
