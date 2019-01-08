@@ -52,9 +52,11 @@ export class RecipeEditComponent implements OnInit {
         this.recipeService.recipeUpdated.next(updatedRecipe);
       });
     } else {
-      this.recipeService.addRecipe(this.recipeForm.value).subscribe(createdRecipe => {
-        this.recipeService.recipesChanged.next(createdRecipe);
-        this.toastrService.success(`${createdRecipe.name} recipe has been added!`, `New recipe`);
+      this.recipeService.addRecipe(this.recipeForm.value).subscribe(createdId => {
+        this.recipeForm.controls['id'].setValue(createdId);
+
+        this.recipeService.recipesChanged.next(this.recipeForm.value);
+        this.toastrService.success(`${this.recipeForm.value.name} recipe has been added!`, `New recipe`);
       });
     }
 

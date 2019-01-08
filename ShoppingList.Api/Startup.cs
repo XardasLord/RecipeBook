@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,7 @@ namespace ShoppingList.Api
             services.ConfigureApplicationJwtAuthorization();
 
             services.AddAutoMapper();
+            services.AddMediatR();
 
             services.AddCors(options =>
             {
