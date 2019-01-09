@@ -13,7 +13,6 @@ namespace ShoppingList.Api.Extensions
     {
         public static IServiceCollection ConfigureApplicationDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<IIngredientService, IngredientService>();
             services.AddTransient<IIngredientHelper, IngredientHelper>();
             services.AddTransient<IAuthenticateService, AuthenticateService>();
             services.AddTransient<IAuthenticateHelper, AuthenticateHelper>();

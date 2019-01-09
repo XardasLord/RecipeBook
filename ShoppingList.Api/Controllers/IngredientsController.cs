@@ -5,20 +5,16 @@ using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business.Implementation.Ingredients.Commands.CreateIngredient;
 using ShoppingList.Business.Implementation.Ingredients.Queries.GetAllIngredients;
 using ShoppingList.Business.Implementation.Ingredients.Queries.GetIngredient;
-using ShoppingList.Business.Models;
-using ShoppingList.Business.Services;
 
 namespace ShoppingList.Api.Controllers
 {
     [Route("api/[controller]")]
     public class IngredientsController : ControllerBase
     {
-        private readonly IIngredientService _ingredientService;
         private readonly IMediator _mediator;
 
-        public IngredientsController(IIngredientService ingredientService, IMediator mediator)
+        public IngredientsController(IMediator mediator)
         {
-            _ingredientService = ingredientService;
             _mediator = mediator;
         }
 
