@@ -1,45 +1,32 @@
 ﻿using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ShoppingList.Business.Models;
-using ShoppingList.Business.Services;
+using ShoppingList.Business.Implementation.Authentications.Commands.Login;
+using ShoppingList.Business.Implementation.Authentications.Commands.Register;
 
 namespace ShoppingList.Api.Controllers
 {
     [Route("api/[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticateService _authenticateService;
+        private readonly IMediator _mediator;
 
-        public AuthenticationController(IAuthenticateService authenticateService)
+        public AuthenticationController(IMediator mediator)
         {
-            _authenticateService = authenticateService;
+            _mediator = mediator;
         }
-
-        // POST: api/Authenticate/register
+        
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserModel user)
+        public async Task<IActionResult> Register([FromBody] RegisterCommand command)
         {
-            if (user == null)
-            {
-                return BadRequest("Invalid client request");
-            }
-
-            var createdId = await _authenticateService.RegisterAsync(user);
-            user.Id = createdId;
-
-            return Ok(); // Created (201) ?
+            return Ok(await _mediator.Send(command));
         }
-
-        // POST: api/Authenticate/login
+        
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] UserModel user)
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
         {
-            if (user == null)
-            {
-                return BadRequest("Invalid client request");
-            }
+            var token = await _mediator.Send(command);
 
-            var token = await _authenticateService.LoginAsync(user);
             if (token == null)
             {
                 return Unauthorized();
