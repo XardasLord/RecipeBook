@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business;
+using ShoppingList.Business.Implementation.Ingredients.Queries.GetAllIngredients;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Services;
 
@@ -12,18 +14,20 @@ namespace ShoppingList.Api.Controllers
     {
         private readonly IIngredientQuery _ingredientQuery;
         private readonly IIngredientService _ingredientService;
+        private readonly IMediator _mediator;
 
-        public IngredientsController(IIngredientQuery ingredientQuery, IIngredientService ingredientService)
+        public IngredientsController(IIngredientQuery ingredientQuery, IIngredientService ingredientService, IMediator mediator)
         {
             _ingredientQuery = ingredientQuery;
             _ingredientService = ingredientService;
+            _mediator = mediator;
         }
 
         // GET: api/Ingredients
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _ingredientQuery.GetAllAsync());
+            return Ok(await _mediator.Send(new GetAllIngredientsQuery()));
         }
 
         // GET: api/Ingredients/00000000-0000-0000-0000-000000000000
