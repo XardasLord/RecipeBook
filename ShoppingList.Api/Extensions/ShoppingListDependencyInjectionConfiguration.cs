@@ -2,7 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ShoppingList.Business.Helpers;
-using ShoppingList.Business.Implementation.Helpers;
+using ShoppingList.Business.Implementation.Authentications.Helpers;
+using ShoppingList.Business.Implementation.Ingredients.Helpers;
 using ShoppingList.Database;
 
 namespace ShoppingList.Api.Extensions

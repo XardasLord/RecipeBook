@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ShoppingList.Business.Helpers;
 using ShoppingList.Database;
 
-namespace ShoppingList.Business.Implementation.Helpers
+namespace ShoppingList.Business.Implementation.Authentications.Helpers
 {
     public class AuthenticateHelper : IAuthenticateHelper
     {
