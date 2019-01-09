@@ -3,19 +3,16 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Business.Implementation.Authentications.Commands.Login;
 using ShoppingList.Business.Implementation.Authentications.Commands.Register;
-using ShoppingList.Business.Services;
 
 namespace ShoppingList.Api.Controllers
 {
     [Route("api/[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticateService _authenticateService;
         private readonly IMediator _mediator;
 
-        public AuthenticationController(IAuthenticateService authenticateService, IMediator mediator)
+        public AuthenticationController(IMediator mediator)
         {
-            _authenticateService = authenticateService;
             _mediator = mediator;
         }
 
