@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ShoppingList.Business.Implementation.Authentications.Commands.Register;
 using ShoppingList.Business.Implementation.Ingredients.Commands.CreateIngredient;
 using ShoppingList.Business.Implementation.Recipes.Commands.CreateRecipe;
 using ShoppingList.Business.Implementation.Recipes.Commands.UpdateRecipe;
@@ -19,6 +20,7 @@ namespace ShoppingList.Api.Mappings
             CreateMap<CreateRecipeCommand, Recipe>();
             CreateMap<UpdateRecipeCommand, Recipe>();
             CreateMap<CreateIngredientCommand, Ingredient>();
+            CreateMap<RegisterCommand, User>();
         }
     }
 }

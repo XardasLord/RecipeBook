@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingList.Business.Implementation.Authentications.Commands.Register;
 using ShoppingList.Business.Models;
 using ShoppingList.Business.Services;
 
@@ -9,28 +11,22 @@ namespace ShoppingList.Api.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticateService _authenticateService;
+        private readonly IMediator _mediator;
 
-        public AuthenticationController(IAuthenticateService authenticateService)
+        public AuthenticationController(IAuthenticateService authenticateService, IMediator mediator)
         {
             _authenticateService = authenticateService;
+            _mediator = mediator;
         }
 
-        // POST: api/Authenticate/register
+        // POST: api/authenticate/register
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserModel user)
+        public async Task<IActionResult> Register([FromBody] RegisterCommand command)
         {
-            if (user == null)
-            {
-                return BadRequest("Invalid client request");
-            }
-
-            var createdId = await _authenticateService.RegisterAsync(user);
-            user.Id = createdId;
-
-            return Ok(); // Created (201) ?
+            return Ok(await _mediator.Send(command));
         }
 
-        // POST: api/Authenticate/login
+        // POST: api/authenticate/login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserModel user)
         {
