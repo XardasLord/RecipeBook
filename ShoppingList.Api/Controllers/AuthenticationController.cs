@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingList.Business.Implementation.Authentications.Commands.Login;
 using ShoppingList.Business.Implementation.Authentications.Commands.Register;
-using ShoppingList.Business.Models;
 using ShoppingList.Business.Services;
 
 namespace ShoppingList.Api.Controllers
@@ -28,14 +28,10 @@ namespace ShoppingList.Api.Controllers
 
         // POST: api/authenticate/login
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] UserModel user)
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
         {
-            if (user == null)
-            {
-                return BadRequest("Invalid client request");
-            }
+            var token = await _mediator.Send(command);
 
-            var token = await _authenticateService.LoginAsync(user);
             if (token == null)
             {
                 return Unauthorized();
