@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingList.Business.Implementation.Ingredients.Commands.CreateIngredient;
 using ShoppingList.Business.Implementation.Ingredients.Queries.GetAllIngredients;
 using ShoppingList.Business.Implementation.Ingredients.Queries.GetIngredient;
 using ShoppingList.Business.Models;
@@ -37,12 +38,9 @@ namespace ShoppingList.Api.Controllers
 
         // POST: api/ingredients
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] IngredientModel model)
+        public async Task<IActionResult> Create([FromBody] CreateIngredientCommand command)
         {
-            var createdId = await _ingredientService.AddAsync(model);
-            model.Id = createdId;
-
-            return CreatedAtAction("Get", new { id = createdId }, model);
+            return Ok(await _mediator.Send(command));
         }
     }
 }
