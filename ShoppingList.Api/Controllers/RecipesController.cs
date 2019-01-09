@@ -20,19 +20,19 @@ namespace ShoppingList.Api.Controllers
         {
             _mediator = mediator;
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _mediator.Send(new GetAllRecipesQuery()));
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await _mediator.Send(new GetRecipeQuery { Id = id }));
         }
-        
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create([FromBody] CreateRecipeCommand command)
@@ -41,14 +41,14 @@ namespace ShoppingList.Api.Controllers
 
             return Ok(recipeId);
         }
-        
+
         [HttpPut("{id}")]
         [Authorize]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRecipeCommand command)
         {
             return Ok(await _mediator.Send(command));
         }
-        
+
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> Delete(Guid id)
