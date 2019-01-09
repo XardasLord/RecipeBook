@@ -15,15 +15,13 @@ namespace ShoppingList.Api.Controllers
         {
             _mediator = mediator;
         }
-
-        // POST: api/authenticate/register
+        
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterCommand command)
         {
             return Ok(await _mediator.Send(command));
         }
-
-        // POST: api/authenticate/login
+        
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginCommand command)
         {

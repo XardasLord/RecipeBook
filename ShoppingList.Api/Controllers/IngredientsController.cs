@@ -17,22 +17,19 @@ namespace ShoppingList.Api.Controllers
         {
             _mediator = mediator;
         }
-
-        // GET: api/ingredients
+        
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _mediator.Send(new GetAllIngredientsQuery()));
         }
-
-        // GET: api/ingredients/{id}
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await _mediator.Send(new GetIngredientQuery { Id = id }));
         }
-
-        // POST: api/ingredients
+        
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateIngredientCommand command)
         {
