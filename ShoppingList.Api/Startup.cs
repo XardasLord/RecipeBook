@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ShoppingList.Api.Extensions;
 using ShoppingList.Infrastructure.Implementation.ErrorHandling;
+using ShoppingList.Security;
 
 namespace ShoppingList.Api
 {
@@ -23,7 +24,7 @@ namespace ShoppingList.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureApplicationDependencies(Configuration);
-            services.ConfigureApplicationJwtAuthorization();
+            services.ConfigureApplicationJwtAuthorization(Configuration);
 
             services.AddAutoMapper();
             services.AddMediatR();
@@ -39,6 +40,8 @@ namespace ShoppingList.Api
                             .AllowAnyHeader();
                     });
             });
+
+            services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

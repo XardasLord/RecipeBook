@@ -6,19 +6,22 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ShoppingList.Business.Helpers;
+using ShoppingList.Security;
 
 namespace ShoppingList.Business.Implementation.Authentications.Commands.Login
 {
     public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
     {
-        private const string SecretKey = "cV0JzOy,O;Hi*=GlARx|DVW/;8SM/k"; //TODO: Move as an environment value
         private readonly IAuthenticateHelper _authenticateHelper;
+        private readonly IOptions<JwtSettings> _jwtSettings;
 
-        public LoginCommandHandler(IAuthenticateHelper authenticateHelper)
+        public LoginCommandHandler(IAuthenticateHelper authenticateHelper, IOptions<JwtSettings> jwtSettings)
         {
             _authenticateHelper = authenticateHelper;
+            _jwtSettings = jwtSettings;
         }
 
         public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -29,7 +32,7 @@ namespace ShoppingList.Business.Implementation.Authentications.Commands.Login
                 return null;
             }
 
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretKey));
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Value.SecretKey));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
             var tokenOptions = new JwtSecurityToken(
