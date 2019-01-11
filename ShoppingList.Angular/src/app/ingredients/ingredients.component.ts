@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-import { Ingredient } from '../shared/ingredient.model';
-import { IngredientService } from '../shared/services/ingredient.service';
+import { Ingredient } from './ingredient.model';
+import { IngredientService } from './ingredient.service';
 
 @Component({
   selector: 'app-ingredients',
