@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-import { IngredientService } from '../../shared/services/ingredient.service';
-import { Ingredient } from '../../shared/ingredient.model';
 import { ToastrService } from 'ngx-toastr';
+
+import { IngredientService } from '../ingredient.service';
+import { Ingredient } from '../ingredient.model';
 
 @Component({
   selector: 'app-ingredient-edit',

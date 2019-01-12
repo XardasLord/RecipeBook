@@ -1,4 +1,4 @@
-import { Ingredient } from './ingredient.model';
+import { Ingredient } from '../ingredients/ingredient.model';
 
 export class RecipePart {
     id: string;

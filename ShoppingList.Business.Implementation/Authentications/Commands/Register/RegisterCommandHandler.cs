@@ -5,6 +5,7 @@ using AutoMapper;
 using MediatR;
 using ShoppingList.Database;
 using ShoppingList.Entities;
+using ShoppingList.Security.PasswordUtilities;
 
 namespace ShoppingList.Business.Implementation.Authentications.Commands.Register
 {
@@ -22,6 +23,10 @@ namespace ShoppingList.Business.Implementation.Authentications.Commands.Register
         public async Task<Guid> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             var user = _mapper.Map<User>(request);
+
+            var hashSalt = PasswordEncryptionUtilities.GenerateSaltedHash(request.Password);
+            user.Salt = hashSalt.Salt;
+            user.Hash = hashSalt.Hash;
 
             await _shoppingListDbContext.Users.AddAsync(user, cancellationToken);
             await _shoppingListDbContext.SaveChangesAsync(cancellationToken);
