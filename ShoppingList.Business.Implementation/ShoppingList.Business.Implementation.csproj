@@ -13,6 +13,7 @@
     <ProjectReference Include="..\ShoppingList.Database\ShoppingList.Database.csproj" />
     <ProjectReference Include="..\ShoppingList.Entities\ShoppingList.Entities.csproj" />
     <ProjectReference Include="..\ShoppingList.Infrastructure\ShoppingList.Infrastructure.csproj" />
+    <ProjectReference Include="..\ShoppingList.Security\ShoppingList.Security.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-import { RecipePart } from '../shared/recipe-part.model';
+import { RecipePart } from './recipe-part.model';
 
 export class Recipe {
     id: string;

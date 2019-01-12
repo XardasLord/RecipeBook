@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
@@ -7,9 +8,9 @@ namespace ShoppingList.Api.Extensions
 {
     public static class ApplicationConfigurationJwtAuthorization
     {
-        public static IServiceCollection ConfigureApplicationJwtAuthorization(this IServiceCollection services)
+        public static IServiceCollection ConfigureApplicationJwtAuthorization(this IServiceCollection services, IConfiguration configuration)
         {
-            var secretKey = "cV0JzOy,O;Hi*=GlARx|DVW/;8SM/k"; //TODO: Move as an environment value
+            var secretKey = configuration.GetSection("JwtSettings").GetSection("SecretKey").Value;
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

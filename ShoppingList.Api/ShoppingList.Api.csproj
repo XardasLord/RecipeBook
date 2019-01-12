@@ -29,6 +29,7 @@
     <ProjectReference Include="..\ShoppingList.Entities\ShoppingList.Entities.csproj" />
     <ProjectReference Include="..\ShoppingList.Infrastructure.Implementation\ShoppingList.Infrastructure.Implementation.csproj" />
     <ProjectReference Include="..\ShoppingList.Infrastructure\ShoppingList.Infrastructure.csproj" />
+    <ProjectReference Include="..\ShoppingList.Security\ShoppingList.Security.csproj" />
   </ItemGroup>
 
   <ItemGroup>

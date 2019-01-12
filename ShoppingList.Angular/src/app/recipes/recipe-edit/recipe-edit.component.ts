@@ -3,10 +3,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
-import { IngredientService } from '../../shared/services/ingredient.service';
+import { IngredientService } from '../../ingredients/ingredient.service';
 import { RecipeService } from '../recipe.service';
-import { RecipePart } from '../../shared/recipe-part.model';
-import { Ingredient } from '../../shared/ingredient.model';
+import { RecipePart } from '../recipe-part.model';
+import { Ingredient } from '../../ingredients/ingredient.model';
 import { Recipe } from '../recipe.model';
 
 @Component({
