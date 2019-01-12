@@ -28,7 +28,7 @@ export class RecipeDetailComponent implements OnInit {
     });
   }
 
-  onAddToShoppingList(): void {
+  onAddToRecipeBook(): void {
     // TODO: Logic
   }
 

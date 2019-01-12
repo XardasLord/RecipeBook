@@ -11,7 +11,7 @@ import { Ingredient } from '../../ingredients/ingredient.model';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
-  @ViewChild('f') shoppingListForm: NgForm;
+  @ViewChild('f') RecipeBookForm: NgForm;
 
   private subscription: Subscription;
   editMode = false;
@@ -25,7 +25,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       this.editedItemIndex = index;
       this.editMode = true;
       this.editedItem = this.shoppingListService.getIngredient(index);
-      this.shoppingListForm.setValue({
+      this.RecipeBookForm.setValue({
         name: this.editedItem.name
       });
     });
@@ -54,6 +54,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   onClear() {
     this.editMode = false;
-    this.shoppingListForm.reset();
+    this.RecipeBookForm.reset();
   }
 }
