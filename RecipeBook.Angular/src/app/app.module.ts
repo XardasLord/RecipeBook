@@ -9,12 +9,11 @@ import { AppComponent } from './app.component';
 import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
+import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/guards/auth-guard.service';
 import { HeaderComponent } from './header/header.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRountingModule } from './app-routing.module';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import { HttpErrorInterceptor } from './http-error.interceptor';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
@@ -25,9 +24,7 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SignupComponent,
-    SigninComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +33,7 @@ export function tokenGetter() {
     RecipesModule,
     IngredientsModule,
     ShoppingListModule,
+    AuthModule,
     SharedModule,
     AppRountingModule,
     ToastrModule.forRoot(),
