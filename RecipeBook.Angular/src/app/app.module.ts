@@ -7,19 +7,18 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
+import { RecipesModule } from './recipes/recipes.module';
+import { SharedModule } from './shared/shared.module';
+import { IngredientsModule } from './ingredients/ingredients.module';
 import { AuthGuard } from './auth/guards/auth-guard.service';
 import { HeaderComponent } from './header/header.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRountingModule } from './app-routing.module';
-import { IngredientsComponent } from './ingredients/ingredients.component';
-import { IngredientEditComponent } from './ingredients/ingredient-edit/ingredient-edit.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { HttpErrorInterceptor } from './http-error.interceptor';
-import { RecipesModule } from './recipes/recipes.module';
-import { SharedModule } from './shared/shared.module';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -31,8 +30,6 @@ export function tokenGetter() {
     HeaderComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    IngredientsComponent,
-    IngredientEditComponent,
     SignupComponent,
     SigninComponent
   ],
@@ -42,6 +39,7 @@ export function tokenGetter() {
     FormsModule,
     HttpClientModule,
     RecipesModule,
+    IngredientsModule,
     SharedModule,
     AppRountingModule,
     ToastrModule.forRoot(),
