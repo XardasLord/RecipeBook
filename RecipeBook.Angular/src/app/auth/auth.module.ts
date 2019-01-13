@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { AuthRoutingModule } from './auth-routing.module';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     FormsModule,
-    SharedModule
+    SharedModule,
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }
