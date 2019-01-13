@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/recipes', pathMatch: 'full'},
+    { path: '', component: HomeComponent },
     { path: 'ingredients', component: IngredientsComponent },
-    { path: 'shopping-list', component: ShoppingListComponent }
+    { path: 'shopping-list', component: ShoppingListComponent },
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
