@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private toastrService: ToastrService,
               private authService: AuthService,
-              private jwtHelper: JwtHelperService) { }
+              private jwtHelper: JwtHelperService,
+              private router: Router) { }
 
   ngOnInit() {
     this.authService.onUserLoggedIn.subscribe(loggedUser => {
@@ -37,6 +39,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('jwt');
     this.toastrService.success(`You have been successfully logged out!`, `Success`);
     this.authService.onUserLoggedOut.next(true);
+
+    this.router.navigate(['/']);
   }
 
   private isTokenAvailableAndValid() {
