@@ -45,7 +45,6 @@ export function tokenGetter() {
     })
   ],
   providers: [
-    ShoppingListService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
