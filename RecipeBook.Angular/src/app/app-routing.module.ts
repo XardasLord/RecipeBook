@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' }, // Lazy loading, just for tests
     { path: 'ingredients', component: IngredientsComponent },
     { path: 'shopping-list', component: ShoppingListComponent },
     { path: '**', redirectTo: '' }
