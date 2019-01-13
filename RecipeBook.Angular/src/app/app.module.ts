@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
@@ -10,10 +10,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { AuthModule } from './auth/auth.module';
-import { AuthGuard } from './auth/guards/auth-guard.service';
-import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRountingModule } from './app-routing.module';
-import { HttpErrorInterceptor } from './http-error.interceptor';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 export function tokenGetter() {
@@ -44,13 +41,6 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [
-    AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
-      multi: true
-    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
