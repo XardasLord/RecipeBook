@@ -25,6 +25,7 @@ namespace RecipeBook.Api
         {
             services.ConfigureApplicationDependencies(Configuration);
             services.ConfigureApplicationJwtAuthorization(Configuration);
+            services.AddHttpContextAccessor();
 
             services.AddAutoMapper();
             services.AddMediatR();
