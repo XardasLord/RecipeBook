@@ -4,6 +4,9 @@
   <div class="card-body">
     <h1 class="card-title">{{ recipe.name }}</h1>
     <p class="card-text">{{ recipe.description }}</p>
+    <p class="card-text" *ngIf="recipe.author">
+      <small class="text-muted">Autor: {{ recipe.author }}</small>
+    </p>
 
     <div class="row">
       <div class="col-4">
