@@ -5,7 +5,8 @@
     <h1 class="card-title">{{ recipe.name }}</h1>
     <p class="card-text">{{ recipe.description }}</p>
     <p class="card-text" *ngIf="recipe.author">
-      <small class="text-muted">Autor: {{ recipe.author }}</small>
+      <small class="row col-12 text-muted">Author: {{ recipe.author }}</small>
+      <small class="row col-12 text-muted">Created at: {{ recipe.createdAt | date:'yyyy-MM-dd' }}</small>
     </p>
 
     <div class="row">
@@ -22,7 +23,7 @@
 
     <ul class="list-group mt-4">
       <li class="list-group-item" *ngFor="let recipePart of recipe.recipeParts">
-        {{ recipePart.ingredient.name }}: {{ recipePart.quantity }} ({{ recipePart.unit}})
+        {{ recipePart.ingredient.name }}: {{ recipePart.quantity }} ({{ recipePart.unit }})
       </li>
     </ul>
   </div>
