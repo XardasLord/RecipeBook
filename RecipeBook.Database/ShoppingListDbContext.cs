@@ -26,7 +26,6 @@ namespace RecipeBook.Database
         {
             foreach (var entity in ChangeTracker.Entries().Where(e => e.State == EntityState.Added).Select(e => e.Entity as BaseEntity))
             {
-                //TODO: CreatedBy
                 entity.Id = entity.Id != Guid.Empty ? entity.Id : _guidGenerator.Generate();
                 entity.CreatedAt = DateTime.Now;
                 entity.CreatedBy = GetLoggedUserEmail();
@@ -34,7 +33,6 @@ namespace RecipeBook.Database
 
             foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Modified).Select(e => e.Entity as BaseEntity))
             {
-                //TODO: ModifiedBy
                 entry.ModifiedAt = DateTime.Now;
                 entry.ModifiedBy = GetLoggedUserEmail();
             }
