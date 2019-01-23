@@ -13,7 +13,9 @@ namespace RecipeBook.Api.Mappings
         public DomainProfile()
         {
             CreateMap<Ingredient, IngredientModel>().ReverseMap();
-            CreateMap<Recipe, RecipeModel>().ReverseMap();
+            CreateMap<Recipe, RecipeModel>()
+                .ForMember(x => x.Author, opts => opts.MapFrom(x => x.CreatedBy))
+                .ReverseMap();
             CreateMap<RecipePart, RecipePartModel>().ReverseMap();
             CreateMap<User, UserModel>().ReverseMap();
 
