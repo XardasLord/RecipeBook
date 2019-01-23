@@ -29,16 +29,22 @@ namespace RecipeBook.Database
                 //TODO: CreatedBy
                 entity.Id = entity.Id != Guid.Empty ? entity.Id : _guidGenerator.Generate();
                 entity.CreatedAt = DateTime.Now;
-                entity.CreatedBy = _httpContext.HttpContext.User.Claims.SingleOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+                entity.CreatedBy = GetLoggedUserEmail();
             }
 
             foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Modified).Select(e => e.Entity as BaseEntity))
             {
                 //TODO: ModifiedBy
                 entry.ModifiedAt = DateTime.Now;
+                entry.ModifiedBy = GetLoggedUserEmail();
             }
 
             return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        private string GetLoggedUserEmail()
+        {
+            return _httpContext.HttpContext.User.Claims.SingleOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
         }
     }
 }
