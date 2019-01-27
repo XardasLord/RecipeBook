@@ -41,12 +41,12 @@ namespace RecipeBook.Business.Implementation.Authentications.Commands.Login
                 throw new Exception("Invalid credentials");
             }
 
-            var tokenString = CreateTokenString();
+            var tokenString = CreateTokenString(request.Email);
 
             return tokenString;
         }
 
-        private string CreateTokenString()
+        private string CreateTokenString(string userEmail)
         {
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Value.SecretKey));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -54,7 +54,10 @@ namespace RecipeBook.Business.Implementation.Authentications.Commands.Login
             var tokenOptions = new JwtSecurityToken(
                 issuer: "http://localhost:4200",
                 audience: "http://localhost:4200",
-                claims: new List<Claim>(), // TODO: User roles, etc.
+                claims: new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, userEmail)
+                },
                 expires: DateTime.Now.AddMinutes(10),
                 signingCredentials: signinCredentials
             );
