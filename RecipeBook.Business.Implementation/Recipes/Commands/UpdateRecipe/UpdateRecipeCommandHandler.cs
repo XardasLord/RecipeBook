@@ -33,6 +33,9 @@ namespace RecipeBook.Business.Implementation.Recipes.Commands.UpdateRecipe
             var recipe = _mapper.Map<Recipe>(request);
 
             _shoppingListDbContext.Recipes.Update(recipe);
+            _shoppingListDbContext.Entry(recipe).State = EntityState.Modified;
+            _shoppingListDbContext.Entry(recipe).Property(x => x.CreatedBy).IsModified = false;
+            _shoppingListDbContext.Entry(recipe).Property(x => x.CreatedAt).IsModified = false;
 
             await _shoppingListDbContext.SaveChangesAsync(cancellationToken);
 
