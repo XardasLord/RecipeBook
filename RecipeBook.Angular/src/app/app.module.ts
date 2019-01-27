@@ -1,20 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { AuthModule } from './auth/auth.module';
-import { AuthGuard } from './auth/guards/auth-guard.service';
-import { HeaderComponent } from './header/header.component';
-import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRountingModule } from './app-routing.module';
-import { HttpErrorInterceptor } from './http-error.interceptor';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 export function tokenGetter() {
@@ -23,18 +19,18 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RecipesModule,
+    // RecipesModule, - eager loading
     IngredientsModule,
     ShoppingListModule,
     AuthModule,
     SharedModule,
+    CoreModule,
     AppRountingModule,
     ToastrModule.forRoot(),
     JwtModule.forRoot({
@@ -45,14 +41,6 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [
-    ShoppingListService,
-    AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
-      multi: true
-    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

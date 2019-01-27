@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using RecipeBook.Entities;
 
@@ -11,6 +12,7 @@ namespace RecipeBook.Database
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         DatabaseFacade Database { get; }
 
         DbSet<Recipe> Recipes { get; set; }
