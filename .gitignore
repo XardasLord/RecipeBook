@@ -250,3 +250,4 @@ logs.txt
 **/apps/
 *.StyleCop
 >>>>>>> feature/guid-order-generator
+logs/internal-nlog.txt
