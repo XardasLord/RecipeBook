@@ -63,6 +63,10 @@ namespace RecipeBook.Api
             app.ConfigureCustomExceptionMiddleware();
             app.UseAuthentication();
             app.UseHttpsRedirection();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseCors("AllowAll");
             app.UseMvc();
         }
