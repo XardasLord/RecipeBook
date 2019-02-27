@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -22,6 +23,11 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetRecipe
 
         public async Task<RecipeModel> Handle(GetRecipeQuery request, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(GetRecipeQuery), "The GetRecipeQuery is null");
+            }
+
             var recipe = await _shoppingListDbContext.Recipes
                 .Include(x => x.RecipeParts)
                 .ThenInclude(x => x.Ingredient)
