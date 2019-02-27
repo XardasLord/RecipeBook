@@ -20,7 +20,7 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetRecipe
             _mapper = mapper;
         }
 
-        public async Task<RecipeModel> Handle(GetRecipeQuery request, CancellationToken cancellationToken)
+        public async Task<RecipeModel> Handle(GetRecipeQuery request, CancellationToken cancellationToken = default(CancellationToken))
         {
             var recipe = await _shoppingListDbContext.Recipes
                 .Include(x => x.RecipeParts)
