@@ -21,7 +21,7 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetAllRecipes
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<RecipeModel>> Handle(GetAllRecipesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<RecipeModel>> Handle(GetAllRecipesQuery request, CancellationToken cancellationToken = default(CancellationToken))
         {
             var recipes = await _shoppingListDbContext.Recipes
                 .Where(x => !x.IsDeleted)
