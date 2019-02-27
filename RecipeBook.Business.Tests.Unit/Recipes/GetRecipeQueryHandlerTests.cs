@@ -22,18 +22,18 @@ namespace RecipeBook.Business.Tests.Unit.Recipes
             _mapper = new Mock<IMapper>(MockBehavior.Strict);
         }
 
-        private async Task<RecipeModel> Act(GetRecipeQuery query)
+        private async Task<RecipeModel> Act(GetRecipeQuery request)
         {
             return await new GetRecipeQueryHandler(_context.Object, _mapper.Object)
-                .Handle(query);
+                .Handle(request);
         }
 
         [Test]
-        public void GetRecipeQueryHandler_WithNullQuery_ThrowArgumentNullException()
+        public void GetRecipeQueryHandler_WithNullRequest_ThrowArgumentNullException()
         {
-            GetRecipeQuery query = null;
+            GetRecipeQuery request = null;
 
-            Func<Task> result = async () => await Act(query);
+            Func<Task> result = async () => await Act(request);
 
             result.Should().ThrowExactly<ArgumentNullException>();
         }
