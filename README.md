@@ -9,17 +9,17 @@ The project requirements are growing all the time and new features are adding on
 * **RecipeBook.Database** - contains DbContexts and database migrations
 * **RecipeBook.CommonUtilities** - this project will contain all cross-cutting concerns
 * **RecipeBook.Security** - contains some security application settings and classes which encrypt passwords
-* **RecipeBook.Domain** - its aim is to cover the bussiness logic. The Domain project has 3 subprojects:
-  - **Domain** - contains abstractions like interfaces for services and queries and also contains class models for the view which are passing to the frontend user
-  - **Implementation** -  contains implementations for services and queries from the Domain interfaces.
-  - **Tests** - contains the domain unit tests.
+* **RecipeBook.Business** - its aim is to cover the bussiness logic. The Business project has 3 subprojects:
+  - **Business** - contains abstractions like interfaces for helpers and also contains class models for the view which are passing to the frontend user
+  - **Implementation** -  contains implementations for handlers using the CQRS pattern.
+  - **Tests.Unit** - this is a unit tests project. It tests handlers and helpers method using NUnit, Moq and FluentAssertions libraries
 * **RecipeBook.Infrastructure** - project which is based on the architecture app goals like for example sending emails mechanism. As the Domain project, Infrastructure has also 3 subprojects:
   - **Infrastructure** - contains abstractions like interfaces for the more architecture app tasks.
   - **Implementation** -  contains implementations from the Domain interfaces.
-  - **Tests** - contains the tests for the tasks from Infrastructure project.
+  - **Tests** - contains the tests for the tasks from Infrastructure project (TODO implementation).
 * **RecipeBook.Api** - this is the general API project. It has 2 subprojects:
   - **Api** - main .NET Core API. It contains controllers with endpoints to communicate with the frontend. This project also contains mappings from entity classes to the domain model classes which are send to the user.
-  - **Tests** - contains tests for the API endpoints.
+  - **Tests** - contains tests for the API endpoints (TODO implementation).
 * **RecipeBook.Angular** - the frontend application built with Angular 7 and Bootstrap v4.2.1.
 
 
@@ -33,5 +33,6 @@ The project requirements are growing all the time and new features are adding on
 * NLog
 * JWT for authorization
 * MediatR (with QueryHandlers and CommandHandlers)
+* Unit Tests: NUnit, Moq, FluentAssertions
 * ...
 * will be updated regularly... :)
