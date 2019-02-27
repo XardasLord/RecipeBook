@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -20,8 +21,10 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetRecipe
             _mapper = mapper;
         }
 
-        public async Task<RecipeModel> Handle(GetRecipeQuery request, CancellationToken cancellationToken)
+        public async Task<RecipeModel> Handle(GetRecipeQuery request, CancellationToken cancellationToken = default(CancellationToken))
         {
+            ValidateRequest(request);
+
             var recipe = await _shoppingListDbContext.Recipes
                 .Include(x => x.RecipeParts)
                 .ThenInclude(x => x.Ingredient)
@@ -29,6 +32,19 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetRecipe
                 .FirstOrDefaultAsync(cancellationToken);
 
             return _mapper.Map<RecipeModel>(recipe);
+        }
+
+        private static void ValidateRequest(GetRecipeQuery request)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(GetRecipeQuery), "The GetRecipeQuery is null");
+            }
+
+            if (request.Id == Guid.Empty)
+            {
+                throw new ArgumentException(nameof(request.Id), "ID in GetRecipeQuery request is empty");
+            }
         }
     }
 }

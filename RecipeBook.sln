@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBook.Business", "Reci
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBook.Business.Implementation", "RecipeBook.Business.Implementation\RecipeBook.Business.Implementation.csproj", "{569010A6-7A9F-4D79-B3E1-99C56A2F2F20}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBook.Business.Tests", "RecipeBook.Business.Tests\RecipeBook.Business.Tests.csproj", "{37D2CCE9-7CE7-4F3B-9832-2F27964D1FA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBook.Business.Tests.Unit", "RecipeBook.Business.Tests.Unit\RecipeBook.Business.Tests.Unit.csproj", "{37D2CCE9-7CE7-4F3B-9832-2F27964D1FA7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBook.Infrastructure", "RecipeBook.Infrastructure\RecipeBook.Infrastructure.csproj", "{4E10E3C2-063E-4122-A89D-0000407D2222}"
 EndProject
