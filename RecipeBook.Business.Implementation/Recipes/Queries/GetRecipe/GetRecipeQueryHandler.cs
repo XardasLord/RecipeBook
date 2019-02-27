@@ -23,6 +23,19 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetRecipe
 
         public async Task<RecipeModel> Handle(GetRecipeQuery request, CancellationToken cancellationToken = default(CancellationToken))
         {
+            ValidateRequest(request);
+
+            var recipe = await _shoppingListDbContext.Recipes
+                .Include(x => x.RecipeParts)
+                .ThenInclude(x => x.Ingredient)
+                .Where(x => x.Id == request.Id && !x.IsDeleted)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            return _mapper.Map<RecipeModel>(recipe);
+        }
+
+        private static void ValidateRequest(GetRecipeQuery request)
+        {
             if (request == null)
             {
                 throw new ArgumentNullException(nameof(GetRecipeQuery), "The GetRecipeQuery is null");
@@ -32,14 +45,6 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetRecipe
             {
                 throw new ArgumentException(nameof(request.Id), "ID in GetRecipeQuery request is empty");
             }
-
-            var recipe = await _shoppingListDbContext.Recipes
-                .Include(x => x.RecipeParts)
-                .ThenInclude(x => x.Ingredient)
-                .Where(x => x.Id == request.Id && !x.IsDeleted)
-                .FirstOrDefaultAsync(cancellationToken);
-
-            return _mapper.Map<RecipeModel>(recipe);
         }
     }
 }
