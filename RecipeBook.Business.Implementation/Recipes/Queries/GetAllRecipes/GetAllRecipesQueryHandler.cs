@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,6 +24,11 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetAllRecipes
 
         public async Task<IEnumerable<RecipeModel>> Handle(GetAllRecipesQuery request, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(GetAllRecipesQuery), "The GetAllRecipesQuery is null");
+            }
+
             var recipes = await _shoppingListDbContext.Recipes
                 .Where(x => !x.IsDeleted)
                 .ToListAsync(cancellationToken);
