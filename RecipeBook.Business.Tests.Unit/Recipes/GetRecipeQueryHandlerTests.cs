@@ -37,5 +37,18 @@ namespace RecipeBook.Business.Tests.Unit.Recipes
 
             result.Should().ThrowExactly<ArgumentNullException>();
         }
+
+        [Test]
+        public void GetRecipeQueryHandler_WithEmptyIdInRequest_ThrowArgumentException()
+        {
+            var request = new GetRecipeQuery
+            {
+                Id = Guid.Empty
+            };
+
+            Func<Task> result = async () => await Act(request);
+
+            result.Should().ThrowExactly<ArgumentException>();
+        }
     }
 }
