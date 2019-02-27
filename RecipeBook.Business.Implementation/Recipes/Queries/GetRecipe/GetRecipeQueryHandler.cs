@@ -28,6 +28,11 @@ namespace RecipeBook.Business.Implementation.Recipes.Queries.GetRecipe
                 throw new ArgumentNullException(nameof(GetRecipeQuery), "The GetRecipeQuery is null");
             }
 
+            if (request.Id == Guid.Empty)
+            {
+                throw new ArgumentException(nameof(request.Id), "ID in GetRecipeQuery request is empty");
+            }
+
             var recipe = await _shoppingListDbContext.Recipes
                 .Include(x => x.RecipeParts)
                 .ThenInclude(x => x.Ingredient)
