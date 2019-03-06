@@ -59,16 +59,20 @@
               <div formGroupName="ingredient">
                 <input type="hidden" formControlName="id">
                 <div class="col-12">
+                  <small>Ingredient name:</small>
                   <input type="text" class="form-control disabled" formControlName="name" readonly>
                 </div>
               </div>
               <div class="col-2">
+                <small>Quantity:</small>
                 <input type="number" class="form-control" formControlName="quantity">
               </div>
               <div class="col-2">
+                <small>Unit:</small>
                 <input type="text" class="form-control" formControlName="unit">
               </div>
               <div class="col-2">
+                <small>Delete:</small>
                 <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
               </div>
             </div>
