@@ -3,5 +3,5 @@ textarea.ng-invalid.ng-touched {
     border: 1px solid red;
 }
 .disabled {
-    background-color: #6c757d;
+    background-color: #c8c8c8;
 }
