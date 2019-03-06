@@ -16,7 +16,10 @@ namespace RecipeBook.Api.Mappings
             CreateMap<Recipe, RecipeModel>()
                 .ForMember(dest => dest.Author, opt => opt.MapFrom(x => x.CreatedBy))
                 .ReverseMap();
-            CreateMap<RecipePart, RecipePartModel>().ReverseMap();
+            CreateMap<RecipePartModel, RecipePart>()
+                .ForMember(dest => dest.IngredientId, opt => opt.MapFrom(y => y.Ingredient.Id))
+                .ForMember(dest => dest.Ingredient, opt => opt.Ignore())
+                .ReverseMap();
             CreateMap<User, UserModel>().ReverseMap();
 
             CreateMap<CreateRecipeCommand, Recipe>();
