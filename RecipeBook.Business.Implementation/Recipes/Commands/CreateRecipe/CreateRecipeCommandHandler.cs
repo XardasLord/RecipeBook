@@ -25,7 +25,7 @@ namespace RecipeBook.Business.Implementation.Recipes.Commands.CreateRecipe
 
             foreach (var recipePart in recipe.RecipeParts)
             {
-                _shoppingListDbContext.Ingredients.Attach(recipePart.Ingredient);
+                _shoppingListDbContext.RecipeParts.Add(recipePart);
             }
 
             _shoppingListDbContext.Recipes.Add(recipe);
