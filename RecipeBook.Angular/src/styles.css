@@ -7,6 +7,8 @@ body {
   /* Location of the image */
   background: url('../src/assets/images/RecipeMainBackground.jpg');
   
+  
+  
   /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
   
