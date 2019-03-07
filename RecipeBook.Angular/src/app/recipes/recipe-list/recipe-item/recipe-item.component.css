@@ -1,9 +1,14 @@
 a {
   color: #000;
+  transition: all .25s ease-in-out;
 }
 
 a.active {
   background-image: linear-gradient(#c8c8c8,  #fafafa);
   color: #000;
   border-color: gray;
+}
+
+a:hover { 
+  transform: scale(1.05);
 }
